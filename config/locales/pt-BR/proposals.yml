@@ -1,0 +1,227 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-proposals/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      proposals_import:
+        origin_component_id: Componente de origem
+    models:
+      decidim/proposals/accepted_proposal_event: Proposta aceita
+      decidim/proposals/collaborative_draft_access_requested_event: Solicitação de acesso a rascunho colaborativo
+      decidim/proposals/collaborative_draft_access_requester_accepted_event: Solicitação de acesso a rascunho colaborativo aceito
+      decidim/proposals/collaborative_draft_access_requester_rejected_event: Solicitação de acesso a rascunho colaborativo rejeitado
+      decidim/proposals/collaborative_draft_access_accepted_event: Acesso a rascunho colaborativo aceito
+      decidim/proposals/collaborative_draft_access_rejected_event: Acesso a rascunho colaborativo rejeitado
+      decidim/proposals/proposal_note_created_event: Nota de proposta criada
+  decidim:
+    admin:
+      filters:
+        proposals:
+          category_id_eq:
+            label: Categoria
+          is_emendation_true:
+            label: Tipo
+            values:
+              'false': Propostas
+              'true': Modificações
+          scope_id_eq:
+            label: Âmbito
+          state_eq:
+            label: Estado
+            values:
+              accepted: Aceites
+              evaluating: Avaliando
+              published: Publicado
+              rejected: Rejeitado
+              validating: Validação técnica
+              withdrawn: Retirado
+          state_null:
+            label: Estado
+            values:
+              'true': Sem resposta
+    components:
+      proposals:
+        settings:
+          global:
+            default_sort_order: Ordem padrão das propostas
+            default_sort_order_help: Padrão significa que se os apoios estiverem ativos as propostas serão ordenadas aleatóriamente, e se os apoios estiverem bloqueados serão ordenadas do maior para o menor número de apoios.
+            default_sort_order_options:
+              default: Padrão
+              most_voted: Mais votada
+            geocoding_enabled: Geolocalização ativada
+            minimum_votes_per_user: Votos mínimos por usuário
+            proposal_limit: Limite de propostas por usuário
+            proposal_edit_time: Edição de propostas
+            proposal_edit_time_choices:
+              infinite: Permitir a edição de propostas por um período infinito de tempo
+              limited: Permitir a edição de propostas dentro de um período de tempo específico
+            scopes_enabled: Âmbitos ativados
+          step:
+            creation_enabled: Participantes podem criar propostas
+            creation_enabled_readonly: Essa configuração é desativada quando você ativa a funcionalidade Textos participativos. Para carregar propostas como texto participativo, clique no botão 'Textos participativos' e siga as instruções.
+            default_sort_order: Ordem padrão das propostas
+            default_sort_order_help: Padrão significa que se os apoios estiverem ativos as propostas serão ordenadas aleatóriamente, e se os apoios estiverem bloqueados serão ordenadas do maior para o menor número de apoios.
+            default_sort_order_options:
+              default: Padrão
+              most_voted: Mais votada
+            publish_answers_immediately_help_html: Lembre-se de que, se você responder a alguma proposta sem essa opção ativada, precisará publicá-la manualmente, selecionando-a e usando a ação para publicação. Para obter mais informações sobre como isso funciona, consulte a <a href="https://docs.decidim.org/en/admin/components/proposals/answers#_publication" target="_blank">página de documentação das respostas das propostas</a>.
+    events:
+      proposals:
+        collaborative_draft_access_accepted:
+          email_intro: '%{requester_name} foi aceito para acessar como colaborador do rascunho colaborativo <a href="%{resource_url}">%{resource_title}</a>.'
+          email_outro: Você recebeu esta notificação porque é um colaborador de <a href="%{resource_url}">%{resource_title}</a>.
+          email_subject: "%{requester_name} foi aceito para acessar como contribuidor de %{resource_title}."
+          notification_title: <a href="%{requester_path}">%{requester_name} %{requester_nickname}</a> foi aceito <strong>para acessar como colaborador</strong> do projeto colaborativo <a href="%{resource_path}">%{resource_title}</a>.
+        collaborative_draft_access_rejected:
+          email_intro: '%{requester_name} foi rejeitado para acessar como colaborador do rascunho colaborativo <a href="%{resource_url}">%{resource_title}</a>.'
+          email_outro: Você recebeu esta notificação porque é um colaborador de <a href="%{resource_url}">%{resource_title}</a>.
+          email_subject: "%{requester_name} foi rejeitado para acessar como colaborador do rascunho colaborativo %{resource_title}."
+          notification_title: <a href="%{requester_path}">%{requester_name} %{requester_nickname}</a> foi <strong>rejeitado para acessar como colaborador</strong> do rascunho colaborativo <a href="%{resource_path}">%{resource_title}</a>.
+        collaborative_draft_access_requested:
+          email_intro: '%{requester_name} solicitou acesso como colaborador. Você pode <strong>aceitar ou rejeitar a solicitação</strong> na página de rascunho colaborativo <a href="%{resource_url}">%{resource_title}</a>.'
+          email_outro: Você recebeu esta notificação porque é um colaborador de <a href="%{resource_url}">%{resource_title}</a>.
+          email_subject: "%{requester_name} solicitou acesso para contribuir em %{resource_title}."
+          notification_title: <a href="%{requester_path}">%{requester_name} %{requester_nickname}</a> solicitou acesso para contribuir no rascunho colaborativo <a href="%{resource_path}">%{resource_title}</a>. Por favor, <strong>aceite ou rejeite o pedido</strong>.
+        collaborative_draft_access_requester_accepted:
+          email_intro: Você foi aceito para acessar como colaborador do rascunho colaborativo <a href="%{resource_url}">%{resource_title}</a>.
+          email_outro: Você recebeu esta notificação porque solicitou se tornar um colaborador de <a href="%{resource_url}">%{resource_title}</a>.
+          email_subject: Você foi aceito como colaborador de %{resource_title}.
+          notification_title: Você foi <strong>aceito para acessar como colaborador</strong> do rascunho colaborativo <a href="%{resource_path}">%{resource_title}</a>.
+        collaborative_draft_access_requester_rejected:
+          email_intro: Você foi rejeitado para acessar como colaborador do rascunho colaborativo <a href="%{resource_url}">%{resource_title}</a>.
+          email_outro: Você recebeu esta notificação porque solicitou se tornar um colaborador de <a href="%{resource_url}">%{resource_title}</a>.
+          email_subject: Você foi rejeitado como colaborador de %{resource_title}.
+          notification_title: Você foi <strong>rejeitado para acessar como colaborador</strong> do rascunho colaborativo <a href="%{resource_path}">%{resource_title}</a>.
+        collaborative_draft_withdrawn:
+          email_intro: <a href="%{author_url}">%{author_name} %{author_nickname}</a> retirou o rascunho colaborativo <a href="%{resource_url}">%{resource_title}</a>.
+          email_outro: Você recebeu esta notificação porque é um colaborador de <a href="%{resource_url}">%{resource_title}</a>.
+          email_subject: "%{author_name} %{author_nickname} retirou o %{resource_title} rascunho colaborativo."
+          notification_title: <a href="%{author_path}">%{author_name} %{author_nickname}</a> <strong>retirou</strong> o rascunho colaborativo <a href="%{resource_path}">%{resource_title}</a>.
+        proposal_accepted:
+          affected_user:
+            email_intro: 'A sua proposta "%{resource_title}" foi aceita. Você pode ler a resposta nesta página:'
+            email_subject: A sua proposta foi aceita
+            notification_title: A sua proposta <a href="%{resource_path}">%{resource_title}</a> foi aceita.
+          email_intro: 'A sua proposta "%{resource_title}" foi aceita. Você pode ler a resposta nesta página:'
+          follower:
+            email_intro: 'A proposta "%{resource_title}" foi aceita. Pode ler a resposta nesta página:'
+            email_subject: Uma proposta que você segue foi aceita
+            notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi aceita.
+        proposal_published_for_space:
+          notification_title: A proposta <a href="%{resource_path}">%{resource_title}</a> foi adicionada em %{participatory_space_title} por %{author}
+          notification_title_official: A proposta oficial <a href="%{resource_path}">%{resource_title}</a> foi adicionada a %{participatory_space_title}
+    gamification:
+      badges:
+        accepted_proposals:
+          conditions:
+            - Escolha o espaço de participação do seu interesse com o envio de propostas ativado
+            - Tente fazer propostas que possam ser realizadas. Desta forma, estas são mais propensas a serem aceitas.
+          description: Este distintivo é concedido quando você participa ativamente em novas propostas e essas são aceitas.
+          description_another: Este participante obteve %{score} propostas aceitas.
+          description_own: Tem %{score} propostas aceitas.
+          name: Propostas aceitas
+          next_level_in: Obtenha mais %{score} propostas aceitas para alcançar o próximo nível!
+          unearned_another: Este participante ainda não obteve nenhuma proposta aceita.
+          unearned_own: Ainda não recebeu alguma proposta.
+    metrics:
+      accepted_proposals:
+        description: Número de propostas aceitas
+        title: Propostas aceitas
+    proposals:
+      admin:
+        imports:
+          label:
+            answers: Importar respostas de um arquivo
+            proposals: Importar propostas de um arquivo
+        proposal_answers:
+          form:
+            accepted: Aceita
+            answer_proposal: Resposta
+            evaluating: Avaliando
+            rejected: Rejeitada
+            not_answered: Não respondida
+      answers:
+        accepted: Aceita
+        evaluating: Avaliando
+        not_answered: Não respondida
+        rejected: Rejeitada
+        withdrawn: Retirada
+      application_helper:
+        filter_origin_values:
+          participants: Participantes
+        filter_state_values:
+          accepted: Aceita
+      create:
+        error: Ocorreu um problema ao salvar a proposta.
+        success: Proposta criada com sucesso. Salva como rascunho.
+      collaborative_drafts:
+        new:
+          add_file: Adicionar arquivo
+          edit_file: Editar arquivo
+          send: Continuar
+        requests:
+          accepted_request:
+            error: Não foi possível ser aceito como colaborador, por favor tente novamente mais tarde.
+            success: "@%{user} foi aceito como colaborador com sucesso"
+          access_requested:
+            success: O seu pedido para colaborar foi enviado com sucesso
+          rejected_request:
+            success: "@%{user} foi rejeitado como colaborador com sucesso"
+        show:
+          back: Voltar
+          info-message: Este é um <strong>rascunho colaborativo</strong> para uma proposta. Isto significa que pode ajudar os seus autores a moldar a proposta utilizando a seção de comentários abaixo ou melhorá-la diretamente solicitando acesso para editá-la. Depois dos autores lhe concederem acesso, você poderá fazer alterações neste rascunho.
+        wizard_aside:
+          back_from_collaborative_draft: Voltar para os rascunhos colaborativos
+          info: Você está criando um <strong>rascunho colaborativo</strong>.
+      proposals:
+        compare:
+          no_similars_found: Muito bom! Não foram encontradas propostas semelhantes
+        index:
+          collaborative_drafts_list: Acessar rascunhos colaborativos
+          text_banner: Está vendo a lista de propostas retiradas pelos seus próprios autores. %{go_back_link}
+        new:
+          title: Crie sua proposta
+        edit:
+          add_documents: Adicionar documentos
+          add_image: Adicionar imagem
+          edit_documents: Editar documentos
+          edit_image: Editar imagem
+        requests:
+          accepted_request:
+            error: Não foi possível ser aceito como colaborador, por favor tente novamente mais tarde.
+            success: "@%{user} foi aceito como colaborador com sucesso"
+        vote_button:
+          vote: Votar
+        voting_rules:
+          can_accumulate_supports_beyond_threshold:
+            description: Cada proposta pode acumular mais de %{limit} voto(s)
+          minimum_votes_per_user:
+            description: Deve distribuir um mínimo de %{votes} voto(s) entre diferentes propostas.
+            supports_remaining: Tem que votar em mais %{remaining_votes} proposta(s) para os seus votos serem levados em conta.
+          proposal_limit:
+            description: Pode criar até %{limit} proposta(s).
+          threshold_per_proposal:
+            description: Para serem aceites, as propostas precisam de atingir %{limit} voto(s)
+          vote_limit:
+            description: Pode votar até %{limit} proposta(s).
+        wizard_aside:
+          back: Voltar
+          back_from_step_1: Voltar para as propostas
+          back_from_step_2: Voltar para as propostas
+          back_from_step_3: Voltar à comparação de propostas
+          back_from_step_4: Voltar para a edição do rascunho
+          info: Você está criando uma <strong>proposta</strong>.
+        preview:
+          announcement_body: A sua proposta foi guardada como um rascunho. Ela precisa ser publicada para que apareça no site.
+          announcement_title: A sua proposta ainda não foi publicada
+        show:
+          back_to: Voltar a
+          back_to_list: Voltar para a lista
+          proposal_accepted_reason: 'Esta proposta foi aceita porque:'
+          report: Denunciar
+      versions:
+        collaborative_drafts:
+          back_to_resource: Voltar para o rascunho colaborativo
+        proposals:
+          back_to_resource: Voltar para a proposta
+    statistics:
+      proposals_accepted: Propostas aceitas

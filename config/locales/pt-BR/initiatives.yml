@@ -1,0 +1,108 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-initiatives/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      attachment:
+        documents: Documentos
+      initiative:
+        answer: Resposta
+        answer_url: URL de resposta
+        area_id: Área
+        decidim_scope_id: Âmbito
+      initiatives_committee_member:
+        user: Membro do Comitê
+      initiatives_settings:
+        initiatives_order: Ordem das iniciativas
+      initiatives_type:
+        comments_enabled: Comentários ativados
+        child_scope_threshold_enabled: Ativar âmbito descendente de assinaturas
+        minimum_committee_members: Mínimo de membros do comitê
+        promoting_committee_enabled: Permitir comitê promotor
+        signature_type: Tipo de assinatura
+      initiatives_type_scope:
+        decidim_scopes_id: Escopo
+        supports_required: Assinaturas necessárias
+    models:
+      decidim/initiatives/initiative_sent_to_technical_validation_event: Iniciativa enviada para validação técnica
+  decidim:
+    admin:
+      initiatives_settings:
+        update:
+          error: Ocorreu um erro
+          success: As configurações das iniciativas foram atualizadas com sucesso
+      menu:
+        committee_members: Membros do Comitê
+        initiatives_settings: Configurações
+    initiatives:
+      admin:
+        committee_requests:
+          index:
+            approve: Aprovar
+            confirm_revoke: Tem certeza?
+            invite_to_committee_help: Compartilhe este link para convidar outros participantes para o comitê promotor
+            no_members_yet: Não há membros no comitê promotor
+            revoke: Revogar
+            title: Membros do Comitê
+        initiatives_settings:
+          edit:
+            update: Atualizar
+          form:
+            comments: Mais comentadas
+            date: Mais recentes
+            publication_date: Publicado mais recentemente
+            random: Aleatória
+            signatures: Mais assinados
+            title: Configurações para iniciativas
+        initiatives_types:
+          form:
+            authorizations: Configurações de autorização
+            child_scope_threshold_enabled_help: 'Esta opção de configuração não suporta votos off-line, ela permite subescopos e funciona com um manipulador de autorização que associa um escopo ao usuário, certifique-se de selecionar essa autorização, abaixo nas configurações de autorização. Para que funcione, os escopos de trabalho precisam ser configurados de forma hierárquica: 1 Pai - N Descendente. Para mais informações sobre como esta configuração funciona, veja o seguinte <a href="https://docs.decidim.org/en/admin/spaces/initiatives/" target="_blank">link</a>.'
+            only_global_scope_enabled_help: Marque esta opção se você ativou "âmbito descendente de assinaturas" e configurou o escopo global como seu escopo pai. Ao ativar isto, a seleção do tipo de iniciativa será pulada no assistente de criação de iniciativa. Para mais informações sobre como esta configuração funciona, veja o seguinte <a href="https://docs.decidim.org/en/admin/spaces/initiatives/" target="_blank">link</a>.
+        initiatives_type_scopes:
+          edit:
+            back: Voltar
+          new:
+            back: Voltar
+      admin_log:
+        initiatives_settings:
+          update: "%{user_name} atualizou as configurações das iniciativas"
+        initiatives_type:
+          create: "%{user_name} criou o tipo de iniciativas %{resource_name}"
+          delete: "%{user_name} deletou o tipo de iniciativas %{resource_name}"
+          update: "%{user_name} atualizou o tipo de iniciativas %{resource_name}"
+      create_initiative:
+        fill_data:
+          fill_data_help: "<ul> <li>Revise o conteúdo de sua iniciativa. Seu título é fácil de entender? O objetivo de sua iniciativa é claro?</li> <li>Você tem que escolher o tipo de assinatura. Pessoalmente, online ou uma combinação de ambos.</li> <li>Qual é o âmbito geográfico da iniciativa?</li> </ul>"
+        finish:
+          back: Voltar
+          back_to_initiatives: Voltar para iniciativas
+          callout_text: Parabéns! Sua iniciativa foi criada com sucesso.
+          confirm: Você vai enviar a iniciativa para um administrador para revisá-la e publicá-la. Uma vez publicada, você não poderá editá-la. Você tem certeza?
+          edit_my_initiative: Editar minha iniciativa
+          go_to_my_initiatives: Ir para minhas iniciativas
+          more_information: "(Mais informações)"
+          send_my_initiative: Enviar minha iniciativa para validação técnica
+        finish_help:
+          access_reminder: Você pode acessar suas iniciativas através do filtro %{link} na página Iniciativas.
+          publish_helper_text: Lembre-se! Para que sua iniciativa seja publicada, você deve completar as informações necessárias e <strong>enviá-la para validação técnica</strong> para que um administrador a reveja.
+        select_initiative_type:
+          select_initiative_type_help: As iniciativas são um meio pelo qual os participantes podem intervir para que a organização possa empreender ações em defesa do interesse geral. Que iniciativa você deseja lançar?
+      form:
+        add_attachments: Documentos
+        attachment_legend: "(Opcional) Adicionar um anexo"
+      initiatives:
+        committee_members:
+          approve: Aprovar
+          confirm_revoke: Tem certeza?
+          invite_to_committee_help: Compartilhe este link para convidar outros participantes para o comitê promotor
+          no_members_yet: Não há membros no comitê promotor
+          revoke: Revogar
+          title: Membros do Comitê
+        print:
+          general_title: Candidatura para admissão de uma iniciativa
+          members_header: Membros do comitê promotor da iniciativa
+          postal_code: CEP
+        vote_cabin:
+          vote: Assinar
+      signature_interval:
+        title: Período de coleta de assinaturas

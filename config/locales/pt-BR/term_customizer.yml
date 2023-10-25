@@ -1,0 +1,176 @@
+# https://github.com/mainio/decidim-module-term_customizer/blob/master/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      constraint:
+        component_id: Componente
+        subject_id: Espaço participativo
+        subject_manifest: Tipo de espaço participativo
+      translation:
+        key: Chave de tradução
+        value: Termo personalizado
+      translation_set:
+        name: Nome
+      translations_import:
+        file: Importar arquivo
+    errors:
+      models:
+        translations_import:
+          attributes:
+            file:
+              invalid_mime_type: 'Tipo de arquivo inválido. Os formatos aceitos são: %{valid_mime_types}'
+  decidim:
+    term_customizer:
+      admin:
+        actions:
+          add_multiple_translations: Adicionar vários
+          back: Voltar
+          cancel: Cancelar
+          clear_cache: Limpar cache
+          confirm_duplicate: Tem certeza de que deseja duplicar esse conjunto?
+          duplicate: Duplicar
+          help: Ajuda
+          import: Importar
+          new_translation: Nova tradução
+          new_translation_set: Novo conjunto de traduções
+          view: Exibir
+        add_translations:
+          index:
+            add: Adicionar
+            help_html: <p>Comece digitando algumas letras que aparecem no termo
+              que você deseja alterar no painel de pesquisa. Aguarde alguns segundos
+              e uma lista de todas as traduções que correspondem à sua pesquisa será
+              exibida abaixo do campo de pesquisa. Clique nas traduções da lista
+              que você deseja alterar. Elas aparecerão abaixo do campo de pesquisa
+              na lista de traduções a serem adicionadas.</p>
+              <p>Depois de adicionar todas as traduções que você deseja alterar,
+              clique no botão "%{button_name}" na parte inferior da tela.</p>
+            help_title: Como pesquisar traduções?
+            search: Pesquisar
+        caches:
+          clear:
+            success: Cache limpo com sucesso
+        models:
+          translation_sets:
+            fields:
+              name: Nome
+          translations:
+            fields:
+              key: Chave de tradução
+              original_term: Termo original
+              term: Termo personalizado
+        titles:
+          add_multiple_translations: Adicionar vários
+          translation_sets: Conjuntos de tradução
+          translations: Traduções
+        translation_sets:
+          constraint_fields:
+            constraint: Restrição
+            remove: Remover
+          create:
+            error: Erro ao criar o conjunto de tradução.
+            success: Conjunto de tradução criado com sucesso.
+          destroy:
+            success: Conjunto de tradução excluído com sucesso.
+          duplicate:
+            copied_set_name: Cópia de %{name}
+            error: Erro ao duplicar o conjunto de tradução.
+            success: Conjunto de tradução duplicado com sucesso.
+          edit:
+            save: Salvar
+            title: Conjunto de tradução
+          form:
+            add_constraint: Adicionar restrição
+            constraint_help_html: <p>As restrições são regras específicas que permitem
+              aplicar as personalizações em um conjunto a um contexto específico.</p>
+              <p>Caso você não defina nenhuma regra de restrição, as personalizações
+              desse conjunto serão aplicadas em toda aplicação. Por outro lado, se você
+              quiser que as personalizações desse conjunto se apliquem somente a um
+              processo específico, selecione "Processos participativos" como o tipo de
+              espaço participativo e o processo de destino como o espaço participativo.
+              Além disso, você também pode aplicar as personalizações a um componente
+              específico, definindo o componente para a restrição.</p>
+              <p>Se você definir várias restrições, as personalizações serão aplicadas
+              em todas elas.</p>
+            constraint_help_title: O que são restrições?
+            help_html: <p>Um conjunto de tradução é um "contêiner" que contém as
+              traduções para um contexto específico que você deseja personalizar.</p>
+              <p>Os conjuntos de tradução ajudam você a organizar suas personalizações
+              e aplicá-las a diferentes contextos. Isso permite que você personalize a
+              mesma tradução de forma diferente em contextos diferentes.</p>
+              <p>Por exemplo, se você quiser personalizar um botão com o termo
+              "Adicionar" de forma diferente para processos participativos diferentes,
+              poderá criar conjuntos de tradução separados para ambos os processos e
+              aplicar o conjunto a esses processos usando as restrições.</p>
+            help_title: O que é um conjunto de tradução?
+            title: Conjunto de tradução
+          index:
+            no_records_html: <p>Não há conjuntos de tradução disponíveis.</p>
+              <p>Comece adicionando um conjunto de tradução a partir do
+              botão "<a href="%{new_set_link}">%{button_name}</a>".</p>
+          new:
+            create: Criar
+            title: Conjuntos de tradução
+          update:
+            error: Erro ao atualizar o conjunto de tradução.
+            success: Conjunto de tradução atualizado com sucesso.
+        translations:
+          create:
+            error: Erro ao criar a tradução.
+            success: Tradução criada com sucesso.
+          destroy:
+            success: Tradução excluída com sucesso.
+          edit:
+            save: Salvar
+            title: Tradução
+          form:
+            help_html: <p>Uma chave de tradução é uma referência técnica à tradução
+              a ser traduzida. Esse não é o termo que você deseja alterar, mas a chave
+              técnica que se refere a essa tradução.</p>
+              <p>Por exemplo, se você quiser alterar o termo <em>"Processos"</em> no
+              menu superior, você usaria a chave <em>"decidim.menu.processes"</em>.</p>
+              <p><a href="https://guides.rubyonrails.org/i18n.html" target="_blank">
+              Leia mais sobre a internacionalização do Rails</a>.</p>
+            help_title: O que é a chave de tradução?
+            term_help_html: "<p>O termo personalizado é a palavra final que
+              você deseja que apareça na interface do usuário em vez do
+              termo original. Obviamente, o termo personalizado pode ser
+              diferente para cada idioma habilitado.</p>"
+            term_help_title: O que é um termo personalizado?
+            title: Tradução
+          import:
+            error: Erro ao importar traduções
+            success: Traduções importadas com sucesso.
+          index:
+            actions: Ações
+            no_records_html: <p>Não há traduções disponíveis neste conjunto.</p>
+              <p>Comece adicionando traduções a esse conjunto. A maneira mais
+              fácil é usar o botão "<a href="%{add_multiple_link}">%{button_name}</a>",
+              onde você pode pesquisar traduções com os mesmos termos que você vê na
+              interface do usuário.</p>
+            selected: selecionada
+          new:
+            create: Criar
+            title: Traduções
+          new_import:
+            accepted_mime_types:
+              csv: CSV
+              json: JSON
+              xlsx: XLSX
+            file_legend: 'Adicione um arquivo de importação que será analisado para traduções.
+              Os formatos suportados são: %{valid_mime_types}'
+            start_import: Iniciar importação
+            title: Importar traduções
+            zip_hint: Você também pode carregar o arquivo ZIP da exportação de traduções.
+          update:
+            error: Erro ao atualizar a tradução.
+            success: Tradução atualizada com sucesso.
+        translations_destroys:
+          destroy:
+            error: Erro ao excluir traduções.
+            success: Traduções excluídas com sucesso.
+          new:
+            destroy: Excluir
+            title: Traduções excluídas
+      menu:
+        term_customizer: Personalizador de termos

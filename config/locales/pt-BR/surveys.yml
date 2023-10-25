@@ -1,0 +1,52 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-survey/config/locales/en.yml
+pt-BR:
+  activemodel:
+    models:
+      decidim/surveys/closed_survey_event: Enquete finalizada
+      decidim/surveys/opened_survey_event: Enquete iniciada
+  activerecord:
+    models:
+      decidim/surveys/survey:
+        one: Enquete
+        other: Enquetes
+  decidim:
+    components:
+      surveys:
+        name: Enquetes
+        settings:
+          global:
+            clean_after_publish: Excluir respostas ao publicar a enquete
+            ends_at: Respostas aceitas até
+            scopes_enabled: Âmbitos ativados
+            starts_at: Respostas aceitas a partir de
+          step:
+            allow_unregistered: Permitir que usuários não registrados respondam a enquete
+            allow_unregistered_help: Se ativo, nenhum login será necessário para responder a enquete. Isto pode levar a dados pouco fidedignos ou não confiáveis e será mais vulnerável a ataques automatizados. Use com cautela! Lembre-se que um participante pode responder a mesma enquete várias vezes, usando diferentes navegadores ou o recurso de "navegação privada" de seu navegador da Web.
+    events:
+      surveys:
+        survey_closed:
+          email_intro: A enquete %{resource_title} em %{participatory_space_title} foi finalizada.
+          email_subject: Uma enquete finalizou em %{participatory_space_title}
+          notification_title: A enquete <a href="%{resource_path}">%{resource_title}</a> em <a href="%{participatory_space_url}">%{participatory_space_title}</a> finalizou.
+        survey_opened:
+          email_intro: 'A enquete %{resource_title} em %{participatory_space_title} está aberta agora. Você pode participar a partir desta página:'
+          email_subject: Uma nova enquete em %{participatory_space_title}
+          notification_title: A enquete <a href="%{resource_path}">%{resource_title}</a> em <a href="%{participatory_space_url}">%{participatory_space_title}</a> está aberta agora.
+    metrics:
+      survey_answers:
+        description: Número de enquetes respondidas por participantes
+    surveys:
+      admin:
+        exports:
+          survey_user_answers: Respostas dos participantes às enquetes
+        surveys:
+          update:
+            invalid: Ocorreu um problema ao salvar a enquete.
+            success: Enquete salva com sucesso.
+      last_activity:
+        new_survey_at_html: "<span>Nova enquete em %{link}</span>"
+      surveys:
+        answer:
+          invalid: Ocorreu um problema ao responder a enquete.
+          spam_detected: Ocorreu um problema ao responder a enquete. Talvez tenha sido muito rápido, pode tentar novamente?
+          success: Enquete respondida corretamente.

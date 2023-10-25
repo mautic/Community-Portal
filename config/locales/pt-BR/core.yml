@@ -1,0 +1,480 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-core/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      invite:
+        nickname: Nome de usuário
+      group:
+        nickname: Nome abreviado
+      user:
+        avatar: Sua foto
+        name: Nome
+        nickname: Nome de usuário
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirme a sua senha
+        personal_url: Site pessoal
+        locale: Idioma
+    models:
+      decidim/invited_to_group_event: Convidado para o grupo
+      decidim/join_request_accepted_event: Pedido de adesão aceita
+      decidim/resource_hidden_event: Recurso oculto
+      decidim/user_group_created_event: Grupo de usuários criado
+      decidim/welcome_notification_event: Mensagem de boas-vindas
+  activerecord:
+    attributes:
+      decidim/user:
+        current_password: Senha atual
+        email: E-mail
+        name: Nome
+        nickname: Nome de usuário
+        password: Senha
+        password_confirmation: Confirmação da senha
+        remember_me: Lembrar-me
+  decidim:
+    accessibility:
+      front_page_link: Ir para a página principal
+    account:
+      delete:
+        alert: Esta ação não pode ser desfeita. Se você apagar sua conta, não será possível fazer o login com suas credenciais. A exclusão de sua conta resultará na anonimização de suas contribuições. Você ainda poderá criar uma nova conta, mas estas contribuições não serão associadas a ela.
+      show:
+        available_locales_helper: Escolha o idioma que você deseja usar para navegar e receber notificações na plataforma
+      update:
+        error: Ocorreu um problema ao atualizar a sua conta.
+        success: A sua conta foi atualizada com sucesso.
+        success_with_email_confirmation: A sua conta foi atualizada com sucesso. Você irá receber um e-mail para confirmar o seu novo endereço de e-mail.
+    admin:
+      actions:
+        cancel: Cancelar
+        destroy: Excluir
+      password_change:
+        alert: Você precisa alterar sua senha para prosseguir
+        notification: Usuários administradores precisam alterar suas senhas a cada %{days} dias.
+    admin_log:
+      area_type:
+        create: "%{user_name} criou o tipo de área %{resource_name}"
+        delete: "%{user_name} removeu o tipo de área %{resource_name}"
+        update: "%{user_name} atualizou o tipo de área %{resource_name}"
+      attachment:
+        create: "%{user_name} criou o anexo %{resource_name}"
+        delete: "%{user_name} removeu o anexo %{resource_name}"
+        update: "%{user_name} atualizou o anexo %{resource_name}"
+      attachment_collection:
+        create: "%{user_name} criou a coleção de anexos %{resource_name}"
+        delete: "%{user_name} removeu a coleção de anexos %{resource_name}"
+        update: "%{user_name} atualizou a coleção de anexos %{resource_name}"
+      category:
+        create: "%{user_name} criou a categoria %{resource_name} no espaço %{space_name}"
+        delete: "%{user_name} removeu a categoria %{resource_name} do espaço %{space_name}"
+        update: "%{user_name} atualizou a categoria %{resource_name} no espaço %{space_name}"
+      component:
+        export_component: "%{user_name} exportou %{resource_name} %{component_name} em %{space_name} como %{format_name}"
+        update_permissions_with_space: "%{user_name} atualizou as permissões de %{resource_name} em %{space_name}"
+      contextual_help_section:
+        update: "%{user_name} atualizou a seção de ajuda %{resource_name}"
+      helpers:
+        answers: respostas
+        comments: comentários
+        projects: projetos
+        results: resultados
+      impersonation_log:
+        manage: "%{user_name} gerenciou %{resource_name} porque %{reason}"
+      moderation:
+        hide: "%{user_name} ocultou um recurso de tipo %{resource_type} no %{space_name} espaço"
+        unreport: "%{user_name} não reportou um recurso de tipo %{resource_type} no %{space_name} espaço"
+      newsletter:
+        create: "%{user_name} criou o boletim informativo %{resource_name}"
+        delete: "%{user_name} removeu o boletim informativo %{resource_name}"
+        deliver: "%{user_name} enviou o boletim informativo %{resource_name}"
+        update: "%{user_name} atualizou o boletim informativo %{resource_name}"
+      oauth_application:
+        create: "%{user_name} criou a aplicação OAuth %{resource_name}"
+        delete: "%{user_name} removeu a aplicação OAuth %{resource_name}"
+        update: "%{user_name} atualizou a aplicação OAuth %{resource_name}"
+      organization:
+        update: "%{user_name} atualizou as configurações da organização"
+        update_external_domain: "%{user_name} atualizou os domínios externos da organização"
+      participatory_space_private_user:
+        create: "%{user_name} convidou %{resource_name} para ser um participante privado"
+        create_via_csv: "%{user_name} convidou %{resource_name} via CSV para ser um participante privado"
+        delete: "%{user_name} removeu %{resource_name} como participante privado"
+      scope_type:
+        create: "%{user_name} criou o tipo de âmbito %{resource_name}"
+        delete: "%{user_name} removeu o tipo de âmbito %{resource_name}"
+        update: "%{user_name} atualizou o tipo de âmbito %{resource_name}"
+      static_page:
+        create: "%{user_name} criou a página estática %{resource_name}"
+        delete: "%{user_name} removeu a página estática %{resource_name}"
+        update: "%{user_name} atualizou a página estática %{resource_name}"
+      user:
+        block: "%{user_name} bloqueou o usuário %{resource_name}"
+        invite: "%{user_name} convidou o usuário %{resource_name} com papel: %{role}"
+        officialize: "%{user_name} oficializou o usuário %{resource_name}"
+        promote: "%{user_name} promoveu %{resource_name}"
+        remove_from_admin: "%{user_name} removeu o usuário %{resource_name} com papel: %{role}"
+        show_email: "%{user_name} recuperou o e-mail do usuário %{resource_name}"
+        transfer: "%{user_name} transferiu o usuário %{resource_name}"
+        unblock: "%{user_name} desbloqueou o usuário %{resource_name}"
+        unofficialize: "%{user_name} removeu a oficialização do usuário %{resource_name}"
+      user_group:
+        block: "%{user_name} bloqueou o grupo %{resource_name}"
+        reject: "%{user_name} rejeitou a verificação de grupo %{resource_name}"
+        unblock: "%{user_name} desbloqueou o grupo %{resource_name}"
+        verify: "%{user_name} verificou o grupo %{resource_name}"
+        verify_via_csv: "%{user_name} verificou o grupo %{resource_name} através de um arquivo CSV"
+      user_moderation:
+        unreport: "%{user_name} retirou denuncia %{resource_type} - %{unreported_user_name}"
+    amendments:
+      accepted:
+        success: A modificação foi aceita com sucesso.
+      amendable:
+        help_text: Melhore a(o) %{model_name} modificando os seus %{amendable_fields}
+    authorization_modals:
+      ok:
+        title: Recebeu autorização para esta página. Por favor recarregue a página para executar a sua ação.
+    contact: Contato
+    content_blocks:
+      cta:
+        name: Imagem, texto, botão de convite a ação
+      cta_settings_form:
+        button_text: Texto da chamada a ação
+        button_url: URL da chamada a ação
+    core:
+      actions:
+        login_before_access: Por favor, faça o login com sua conta antes de acessar
+        unauthorized: Você não está autorizado a realizar esta ação
+    devise:
+      registrations:
+        new:
+          nickname_help: Seu nome de usuário em %{organization}. Só pode conter letras, números, '-' e '_'.
+          password_help: "%{minimun_characters} caracteres no mínimo, não deverá ser muito comum (por ex. 123456) e deverá ser diferente de seu apelido e do seu e-mail."
+          newsletter_title: Permissão de contato
+      sessions:
+        new:
+          sign_in_disabled: Você pode acessar com uma conta externa
+          sign_up_disabled: Inscrever-se está desabilitado, utilize uma conta de usuário existente para acessar
+        user:
+          timed_out: Você esteve inativo por muito tempo e foi automaticamente dispensado do serviço. Se você quiser continuar usando o serviço, por favor, entre novamente.
+      shared:
+        newsletter_modal:
+          buttons:
+            uncheck: Manter desmarcado
+    events:
+      gamification:
+        badge_earned:
+          email_intro: Parabéns! Você ganhou o <a href="%{resource_url}">distintivo %{badge_name}</a> (nível %{current_level}).
+          email_outro: Você recebeu esta notificação porque realizou uma atividade em nossa plataforma.
+          email_subject: 'Você ganhou um novo distintivo: %{badge_name}!'
+          notification_title: Parabéns! Você ganhou o <a href="%{resource_path}">distintivo %{badge_name}</a> (nível %{current_level}).
+        level_up:
+          email_intro: Parabéns! Você atingiu o nível %{current_level} no <a href="%{resource_url}">distintivo %{badge_name}</a>!
+          email_outro: Você recebeu esta notificação porque realizou uma atividade em nossa plataforma.
+          email_subject: Você atingiu o nível %{current_level} no distintivo %{badge_name}!
+          notification_title: Parabéns! Você atingiu o nível %{current_level} no <a href="%{resource_path}">distintivo %{badge_name}</a>!
+    editor_images:
+      create:
+        error: Erro ao carregar a imagem
+        success: Imagem carregada com sucesso
+      drag_and_drop_help: Adicione imagens arrastando e soltando-as ou colando-as.
+    forms:
+      current_file: Arquivo atual
+      current_image: Imagem atual
+      default_image: Imagem padrão
+      file_help:
+        file:
+          explanation: 'Orientação para o arquivo:'
+          message_2: Para imagens, use de preferência imagens em paisagem, o serviço corta a imagem. Para arquivos CSV, o separador entre colunas deve ser uma vírgula (",")
+        icon:
+          explanation: 'Orientação para o ícone:'
+          message_1: Tem que ser uma imagem quadrada.
+          message_2: O tamanho recomendado para esta imagem é 512x512.
+        image:
+          message_1: Preferencialmente, uma imagem de paisagem que não tenha nenhum texto.
+      file_validation:
+        allowed_file_extensions: 'Extensões de arquivo permitidas: %{extensions}'
+        max_file_dimension: 'Dimensões máximas do arquivo: %{resolution} pixels'
+        max_file_size: 'Tamanho máximo do arquivo: %{megabytes}MB'
+      remove_this_file: Remover este arquivo
+      upload:
+        labels:
+          add_attachment: Adicionar anexo
+          add_file: Adicionar arquivo
+          add_image: Adicionar imagem
+          cancel: Cancelar
+          edit_image: Editar imagem
+          error: Erro!
+          file_size_too_large: 'O tamanho do arquivo é muito grande! Tamanho máximo do arquivo: %{megabytes}MB'
+          remove: Remover
+          replace: Substituir
+          save: Salvar
+          title: Título
+          title_required: Título é obrigatório!
+          uploaded: Carregado
+          validating: Validando...
+          validation_error: Erro de validação!
+      upload_help:
+        dropzone: Solte arquivos aqui ou clique para carregar
+        explanation: Orientação para %{attribute}
+    help:
+      main_topic:
+        title: Ajuda geral
+    log:
+      base_presenter:
+        publish: "%{user_name} publicou %{resource_name}"
+        publish_with_space: "%{user_name} publicou %{resource_name} em %{space_name}"
+        unpublish: "%{user_name} removeu a publicação %{resource_name}"
+        unpublish_with_space: "%{user_name} removeu a publicação %{resource_name} em %{space_name}"
+        update_permissions_with_space: "%{user_name} atualizou as permissões de %{resource_name} em %{space_name}"
+    pages:
+      home:
+        footer_sub_hero:
+          footer_sub_hero_body: Vamos construir uma sociedade mais aberta, transparente e colaborativa.<br /> Inscreva-se, participe e decida.
+          register: Registrar
+        sub_hero:
+          register: Registrar
+      terms_and_conditions:
+        form:
+          agreement: Eu concordo com estes termos
+        refuse:
+          modal_body: Se você recusar, não poderá usar a plataforma, poderá <a href="%{download_your_data_path}">baixar seus dados</a> e/ou <a href="%{delete_path}">excluir sua conta</a>.
+        required_review:
+          alert: Atualizamos os nossos Termos de Serviço, por favor reveja-os.
+    passwords:
+      update:
+        error: Ocorreu um problema ao atualizar a senha
+        success: Senha atualizada com sucesso
+    versions:
+      resource_version:
+        see_other_versions: ver outras versões
+    shared:
+      floating_help:
+        close: Fechar ajuda
+        help: Ajuda
+      mentions_modal:
+        remove_recipient: Remover o destinatário %{name}
+      share_modal:
+        share: Compartilhar
+        share_link: Compartilhar link
+    follows:
+      create:
+        participatory_space: Seguir <span class="show-for-sr">%{resource_name}</span>
+    menu:
+      home: Início
+    notifications:
+      no_notifications: Ainda não há notificações.
+      show:
+        missing_event: Ops, essa notificação pertence a um item que não está mais disponível. Você pode descartá-lo.
+    notifications_digest_mailer:
+      header:
+        daily: Boletim de Notificação Diário
+        weekly: Boletim de Notificação Semanal
+      hello: Olá %{name},
+      intro:
+        daily: 'Estas são as notificações do último dia com base na atividade que você está acompanhando:'
+        weekly: 'Estas são as notificações da última semana com base na atividade que você está acompanhando:'
+      outro: Você recebeu estas notificações porque está seguindo este conteúdo ou seus autores. Você pode deixar de segui-los em suas respectivas páginas.
+      see_more: Veja mais notificações
+      subject: Este é o seu e-mail de resumo
+    notifications_settings:
+      show:
+        allow_push_notifications: Receba notificações por impulso para descobrir o que está acontecendo quando você não está na plataforma. Você pode desligá-las a qualquer momento.
+        email_on_moderations: Quero receber um e-mail cada vez que algo é relatado para moderação.
+        update_notifications_settings: Salvar alterações
+        notification_settings:
+          close_meeting_reminder: Quero receber lembretes por e-mail de relatórios não publicados de reuniões fechadas
+        notifications_sending_frequencies:
+          daily: Diariamente
+          none: Nenhuma
+          real_time: Em tempo real
+          weekly: Semanalmente
+        notifications_sending_frequency: Com que freqüência você deseja receber as notificações por e-mail?
+        push_notifications: Notificações por impulso
+        push_notifications_reminder: Para obter notificações da plataforma, você precisará permitir que elas sejam feitas primeiro nas configurações do seu navegador.
+    data_portability:
+      show:
+        download_data_description: Um arquivo contendo todas as informações associadas à sua conta será enviado para <strong>%{user_email}</strong>. Este e-mail conterá um arquivo .zip e uma senha para abri-lo.<br/><br/>Para descompactar o arquivo, você precisará do <a href="https://www.7-zip.org/">7-Zip</a> (para Windows) ou <a href="https://www.keka.io/">Keka</a> (para MacOS). Se você usa Linux, na maioria das vezes você o terá instalado por padrão. Caso contrário, você pode usar <a href="https://gitlab.gnome.org/GNOME/file-roller">File Roller</a> ou <a href="https://peazip.github.io">PeaZip</a>).
+    groups:
+      form:
+        nickname_help: Nome abreviado da sua organização, associação, coletivo, grupo, etc. Não use espaços nem acentos.
+      new:
+        subtitle: Crie um grupo e convide outros usuários a aderir para participarem a um nível coletivo.
+    messaging:
+      conversation_mailer:
+        comanagers_new_conversation:
+          admin_in_group: Você recebeu isso devido ser um administrador(a) em %{group}.
+          outro: Aproveite o Decidim!
+        comanagers_new_message:
+          admin_in_group: Você recebeu isso devido ser um(a) administrador(a) em %{group}.
+          intro: "%{manager} publicou novas mensagens em uma conversa em nome de %{group}. Clique aqui para vê-las:"
+          outro: Aproveite o Decidim!
+        new_conversation:
+          intro: "%{sender} iniciou uma nova conversa com você. Clique aqui para vê-la:"
+          outro: Aproveite o Decidim!
+          subject: "%{sender} iniciou uma conversa com você"
+      conversations:
+        add_conversation_users:
+          add_max_users: 'Adicionar usuários à conversa: 9 usuários no máximo'
+        index:
+          to: Para
+    welcome_notification:
+      default_body: <p>Olá {{name}}, agradecemos por se juntar a {{organization}} e seja bem-vindo(a)!</p><ul><li>Se quiser ter uma ideia rápida do que pode fazer aqui, veja a seção <a href="{{help_url}}">Ajuda</a> .</li><li>Depois de lê-la, receberá o seu primeiro distintivo. Aqui está uma <a href="{{badges_url}}">lista de todos os distintivos</a> que pode obter como participante de {{organization}}</li><li>Por último, mas não menos importante, junte-se a outras pessoas, compartilhe com elas a sua experiência de estar envolvido e participar em {{organization}}. Faça propostas, comentários, debata, pense em como contribuir para o bem comum, forneça argumentos para convencer, escute e leia para ser convencido, expresse as suas ideias de maneira concreta e direta, responda com paciência e decisão, defenda as suas ideias e mantenha uma mente aberta para colaborar e juntar-se às ideias de outras pessoas.</li></ul>
+    wizard_step_form:
+      wizard_aside:
+        back: Voltar
+  devise:
+    failure:
+      invalid: '%{authentication_keys} ou senha inválidos(as).'
+      not_found_in_database: '%{authentication_keys} ou senha inválidos(as).'
+      unauthenticated: Você precisa entrar ou se cadastrar antes de continuar.
+    invitations:
+      updated_not_active: Sua senha foi definida com sucesso.
+      edit:
+        nickname_help: Seu nome de usuário em %{organization}. Só pode conter letras, números, '-' e '_'.
+        subtitle: Se você aceitar o convite, por favor defina seu nome de usuário e senha.
+      updated: A sua senha foi configurada corretamente. Agora você tem sessão iniciada.
+      updated_not_active: A sua senha foi configurada com sucesso.
+    mailer:
+      confirmation_instructions:
+        instruction: 'Você pode confirmar o e-mail da sua conta através do link abaixo:'
+      email_changed:
+        message: Estamos entrando em contato com você para notificar a mudança de seu e-mail para %{email}.
+        subject: E-mail modificado
+      invitation_instructions:
+        accept_until: Este convite irá expirar em %{due_date}.
+        ignore: |-
+          Se você não quiser aceitar o convite, por favor ignore este e-mail.<br />
+          A sua conta não será criada até que acesse o link acima e defina o seu nome de usuário e senha.
+        invited_you_as_admin: "%{invited_by} convidou você como administrador(a) de %{application}. Aceite através do link abaixo."
+        invited_you_as_private_user: "%{invited_by} convidou você como participante privado de %{application}. Aceite através do link abaixo."
+        someone_invited_you: Alguém convidou você para %{application}. Aceite através do link abaixo.
+        someone_invited_you_as_admin: Alguém convidou você como administrador(a) de %{application}. Aceite através do link abaixo.
+        someone_invited_you_as_private_user: Alguém convidou você como participante privado de %{application}. Aceite através do link abaixo.
+      invite_admin:
+        subject: Você recebeu um convite para gerenciar %{organization}
+      invite_collaborator:
+        subject: Você recebeu um convite para colaborar em %{organization}
+      invite_private_user:
+        subject: Você recebeu um convite para um processo participativo privado em %{organization}
+      organization_admin_invitation_instructions:
+        subject: Você recebeu um convite para gerenciar %{organization}
+      password_change:
+        message: Estamos contatando você para dizer de que a sua senha foi modificada.
+        subject: Senha modificada
+      reset_password_instructions:
+        action: Modificar a minha senha
+        instruction: Alguém solicitou um link para alterar a sua senha e pode fazer isso através do link abaixo.
+        instruction_3: A sua senha não será alterada até que acesse o link acima e crie uma nova.
+        subject: Instruções de modificação da senha
+    passwords:
+      edit:
+        change_my_password: Modificar a minha senha
+        change_your_password: Modificar a sua senha
+        confirm_new_password: Confirme a nova senha
+        new_password: Nova senha
+        password_help: "%{minimun_characters} caracteres mínimos, não devem ser muito comuns (por exemplo, 123456) e devem ser diferentes de seu nome de usuário e de seu e-mail."
+        password_help_admin: "%{minimun_characters} caracteres mínimos, não devem ser muito comuns (por exemplo, 123456), devem ser diferentes de seu nome de usuário e seu e-mail e devem ser diferentes de suas senhas antigas."
+        title: Mudança de senha
+      new:
+        forgot_your_password: Esqueceu a sua senha?
+        send_me_reset_password_instructions: Envie-me as instruções de modificação da senha
+      no_token: Não pode acessar esta página sem ter vindo a partir de um e-mail de modificação da senha. Se vier a partir de um e-mail de modificação da senha, verifique se usou o URL completo fornecido.
+      send_instructions: Você receberá um e-mail com instruções sobre como modificar a sua senha dentro de poucos minutos.
+      send_paranoid_instructions: Se o seu endereço de e-mail existir na nossa base de dados, receberá um link de recuperação da senha no seu endereço de e-mail dentro de poucos minutos.
+      updated: A sua senha foi modificada com sucesso. Agora você tem sua sessão iniciada.
+      updated_not_active: A sua senha foi modificada com sucesso.
+    registrations:
+      destroyed: A sua conta foi cancelada com sucesso. Esperamos vê-lo(a) novamente em breve.
+      edit:
+        are_you_sure: Você tem certeza?
+        we_need_your_current_password_to_confirm_your_changes: precisamos da sua senha atual para confirmar as suas alterações
+      signed_up_but_unconfirmed: Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, siga o link para ativar sua conta.
+      update_needs_confirmation: Você atualizou sua conta com sucesso, mas precisamos confirmar seu novo endereço de e-mail. Por favor, verifique seu e-mail e siga o link para confirmar seu novo endereço de e-mail.
+      updated: A sua conta foi atualizada com sucesso.
+    sessions:
+      already_signed_out: Sessão terminada com sucesso.
+      signed_in: Sessão iniciada com sucesso.
+      signed_out: Sessão terminada com sucesso.
+    shared:
+      links:
+        back: Voltar
+        forgot_your_password: Esqueceu a sua senha?
+  forms:
+    length_validator:
+      minimum:
+        one: Pelo menos %{count} caractere
+        other: Pelo menos %{count} caracteres
+  layouts:
+    decidim:
+      data_consent:
+        details:
+          columns:
+            description: Descrição
+            name: Nome
+            service: Serviço
+            type: Tipo
+          items:
+            _session_id:
+              description: Permite que os sites se lembrem do usuário dentro de um site quando ele se move entre páginas.
+              service: Este site
+            decidim-consent:
+              description: Armazena informações sobre os cookies permitidos pelo usuário neste site.
+              service: Este site
+            pwaInstallPromptSeen:
+              description: Armazena o status se a notificação de instalação da aplicação web progressiva (PWA) já tiver sido vista pelo usuário.
+              service: Este site
+          types:
+            cookie: Cookie
+            local_storage: Armazenagem local
+        dialog:
+          accept_all: Aceitar todos
+          accept_only_essential: Aceitar somente o essencial
+          description: Utilizamos cookies para melhorar o desempenho e o conteúdo do site. Os cookies nos permitem fornecer uma experiência de usuário mais individual e canais de mídia social.
+          settings: Configurações
+          title: Informações sobre os cookies utilizados no site
+        modal:
+          accept_all: Aceitar todos
+          accept_only_essential: Aceitar somente o essencial
+          analytics:
+            description: Estes cookies são usados para medir e analisar o público para ajudar a melhorar o site.
+            title: Analítica e estatística
+          description: Utilizamos cookies para garantir as funcionalidades básicas do site e para melhorar sua experiência on-line. Você pode configurar e aceitar o uso dos cookies, e modificar suas opções de consentimento, a qualquer momento.
+          essential:
+            description: Estes cookies permitem a funcionalidade chave do site e ajudam a manter seus usuários seguros. Eles são salvos automaticamente no navegador e não podem ser desativados.
+            title: Essencial
+          marketing:
+            description: Estes cookies coletam informações sobre como você utiliza o site e podem ser utilizados para fornecer-lhe uma publicidade mais personalizada através dos diferentes sites que você utiliza.
+            title: Publicidade
+          preferences:
+            description: Estes cookies permitem que o site lembre as escolhas feitas no passado neste site para proporcionar uma experiência mais personalizada para os usuários do site.
+            title: Preferências
+          save_settings: Salvar configurações
+          title: Configurações de cookies
+          toggle: Alternar %{consent_category}
+        warning:
+          all_categories: Todos os cookies
+          change_settings: Alterar configurações de cookies
+          consent_required: Você precisa habilitar %{categories} para poder ver este conteúdo.
+      footer:
+        data_consent_settings: Configurações de cookies
+        download_open_data: Baixar arquivos de Dados Abertos
+      offline_banner:
+        cache_version_page: Oooops! Sua rede está offline. Esta é uma versão previamente em cache da página que você está visitando, talvez o conteúdo não esteja atualizado.
+      timeout_modal:
+        body: Você esteve inativo por %{minutes} minutos. Se você continuar inativo, você será automaticamente desconectado para sua própria segurança.
+        continue_session: Continuar sessão
+        sign_out: Sair
+        title: Você gostaria de continuar sua sessão?
+      upload_modal:
+        close_modal: Fechar modal
+  helpers:
+    select:
+      prompt-BR: Por favor selecione
+  password_validator:
+    blacklisted: está na lista de proibições
+    email_included_in_password: é muito semelhante com o seu e-mail
+    nickname_included_in_password: é muito parecido com seu nome de usuário
+    password_repeated: não pode reutilizar a senha antiga
+  time:
+    formats:
+      ddmm: "%d/%m"
+      ddmmyyyy: "%d/%m/%Y"

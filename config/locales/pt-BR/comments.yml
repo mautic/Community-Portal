@@ -1,0 +1,31 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-comments/config/locales/en.yml
+pt-BR:
+  activemodel:
+    models:
+      decidim/comments/comment_by_followed_user_event: Comente
+      decidim/comments/comment_created_event: Comentário
+      decidim/comments/reply_created_event: Resposta
+      decidim/comments/user_group_mentioned_event: Mencionar
+      decidim/comments/user_mentioned_event: Mencionar
+  activerecord:
+    models:
+      decidim/comments/comment:
+        one: Comentário
+        other: Comentários
+  decidim:
+    comments:
+      admin:
+        shared:
+          availability_fields:
+            enabled: Comentários ativados
+            end_time: Comentários ativados até
+            start_time: Comentários ativados desde
+    components:
+      add_comment_form:
+        account_message: <a href="%{sign_in_url}">Entre com sua conta</a> ou <a href="%{sign_up_url}">inscreva-se</a> para adicionar seu comentário.
+      comments:
+        title:
+          one: "%{count} comentário"
+          other: "%{count} comentários"
+        single_comment_warning: Pode consultar os comentários restantes <a href="%{url}">aqui</a>.
+        single_comment_warning_title: Está vendo um único comentário

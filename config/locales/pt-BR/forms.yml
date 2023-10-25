@@ -1,0 +1,60 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-forms/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      answer:
+        selected_choices: Escolhas selecionadas
+      questionnaire:
+        title: Título
+  decidim:
+    forms:
+      admin:
+        questionnaires:
+          actions:
+            back: Voltar às perguntas
+          answers:
+            actions:
+              back: Voltar às respostas
+          form:
+            add_title_and_description: Adicionar título e descrição
+            already_answered_warning: O questionário já foi respondido por alguns usuários, por isso não pode modificar as suas questões.
+            collapse: Recolher todas as questões
+          question:
+            collapse: Recolher
+          title_and_description:
+            collapse: Recolher
+            description: Descrição
+            expand: Expandir
+            title: Título
+            remove: Remover
+            up: Acima
+            down: Abaixo
+            title_and_description: Título e descrição
+          edit:
+            save: Salvar
+      admin_log:
+        questionnaire:
+          update: "%{user_name} atualizou o questionário %{resource_name}"
+      files:
+        extension_allowlist: 'Formatos aceitos:'
+      images:
+        processors:
+          resize_and_pad: Esta imagem será redimensionada e preenchida para %{dimensions}.
+          resize_to_fit: Esta imagem será redimensionada para caber em %{dimensions}.
+      question_types:
+        files: Arquivos
+        title_and_description: Título e descrição
+      questionnaires:
+        show:
+          questionnaire_answered:
+            body: Você já respondeu este questionário.
+          tos_agreement: Ao participar, você aceita os seus Termos de Serviço
+      step_navigation:
+        show:
+          are_you_sure: Esta ação não poderá ser desfeita e não deixará editar as suas respostas. Você tem certeza?
+          back: Voltar
+      user_answers_serializer:
+        registered: Registrado
+        session_token: Identificador do usuário
+        unregistered: Não registrado
+        user_status: Estado do usuário

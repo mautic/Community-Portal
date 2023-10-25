@@ -1,0 +1,9 @@
+#! /bin/sh
+set -e
+# Start supervisord with the configuration that have
+# been generated through the docker-entrypoint. 
+# => You can define through RUN_* environment variables
+# what will be started or not. 
+# @see bundle/docker-entrypoint.d/45_template
+supervisord -c "$ROOT"/config/supervisord.conf
+echo "    🚀 supervisord is starting"

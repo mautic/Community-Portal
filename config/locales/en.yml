@@ -1,0 +1,23 @@
+en:
+  decidim:
+    system:
+      organizations:
+        omniauth_settings:
+          openid_connect:
+            name: "Conexion name"
+            scope: "OAuth2 scope"
+            response_type: "Response type"
+            uid_field: "Identifier field"
+            issuer: "Issuer"
+            client_options__port: "Port"
+            client_options__scheme: "Scheme"
+            client_options__host: "Host"
+            client_options__identifier: "Identifier"
+            client_options__secret: "Secret"
+            client_options__redirect_uri: "Redirect URI"
+            client_options__authorization_endpoint: "Authorization Endpoint"
+            client_options__token_endpoint: "Token Endpoint"
+            client_options__userinfo_endpoint: "User Info Endpoint"
+            client_options__jwks_uri: "Jwks URI"
+            client_options__end_session_endpoint: "End session endpoint"
+

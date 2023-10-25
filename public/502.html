@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>502 - Bad Gateway</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 100px;
+            font-weight: bold;
+            color: #1a237e; /* Blue color */
+        }
+
+        .error-message {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .home-link {
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            color: #1a237e; /* Blue color */
+            border: 2px solid #1a237e; /* Blue color */
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .home-link:hover {
+            background-color: #1a237e; /* Blue color */
+            color: #f0f4f8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">502</div>
+        <div class="error-message">Bad Gateway</div>
+        <a class="home-link" href="/">Go to Home</a>
+    </div>
+</body>
+</html>
+

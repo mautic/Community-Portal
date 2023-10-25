@@ -1,0 +1,113 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-participatory_processes/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      participatory_process:
+        document: Documento
+        import_attachments: Importar anexos
+        import_categories: Importar categorias
+        import_components: Importar componentes
+        import_steps: Importar fases
+        participatory_process_type_id: Tipo de processo participativo
+        private_space: Espaço privado
+        weight: Posição de ordem
+      participatory_process_group:
+        group_url: Site
+        promoted: Promovido
+      participatory_process_step:
+        cta_text: Texto de Chamada para Ação
+      participatory_process_type:
+        title: Título
+      category:
+        weight: Posição de ordem
+      component:
+        weight: Posição de ordem
+    models:
+      decidim/participatory_process_role_assigned_event: Função atribuída no processo participativo
+  activerecord:
+    models:
+      decidim/participatory_process_user_role: Usuário
+      decidim/participatory_space_private_user: Usuário
+  decidim:
+    admin:
+      actions:
+        new_process_type: Novo tipo de processo
+      menu:
+        participatory_processes_submenu:
+          attachment_files: Arquivos
+        participatory_process_types: Tipos de processo
+      models:
+        participatory_process_type:
+          fields:
+            created_at: Criado em
+            title: Título
+        user:
+          fields:
+            invitation_accepted_at: Convite aceito em
+      participatory_process_group_landing_page:
+        edit:
+          active_content_blocks: Blocos de conteúdo ativos
+          inactive_content_blocks: Blocos de conteúdo inativos
+      participatory_process_group_landing_page_content_blocks:
+        edit:
+          update: Atualizar
+      participatory_process_types:
+        create:
+          error: Havia um problema ao criar um novo tipo de processo.
+          success: Tipo de processo criado com sucesso.
+        destroy:
+          success: Tipo de processo excluído com sucesso.
+        edit:
+          title: Tipo de processo de edição
+          update: Atualizar
+        form:
+          title: Título
+        new:
+          create: Criar
+          title: Novo tipo de processo
+      titles:
+        participatory_process_types: Tipos de processo
+    admin_log:
+      participatory_process:
+        create: "%{user_name} criou o processo participativo %{resource_name}"
+        duplicate: "%{user_name} duplicou o processo participativo %{resource_name}"
+        export: "%{user_name} exportou o processo participativo %{resource_name}"
+        import: "%{user_name} importou o processo participativo %{resource_name}"
+        publish: "%{user_name} publicou o processo participativo %{resource_name}"
+        unpublish: "%{user_name} removeu a publicação do processo participativo %{resource_name}"
+        update: "%{user_name} atualizou o processo participativo %{resource_name}"
+      participatory_process_type:
+        create: "%{user_name} criou o tipo de processo participativo %{resource_name}"
+        delete: "%{user_name} deletou o tipo de processo participativo %{resource_name}"
+        update: "%{user_name} atualizou o tipo de processo participativo %{resource_name}"
+    events:
+      participatory_process:
+        role_assigned:
+          email_intro: Você foi atribuído como %{role} no processo participativo "%{resource_title}".
+          email_outro: Você recebeu esta notificação por ser %{role} do processo participativo "%{resource_title}".
+          email_subject: Você foi atribuído como %{role} para "%{resource_title}".
+          notification_title: Você foi atribuído como %{role} no processo participativo <a href="%{resource_url}">%{resource_title}</a>.
+        step_activated:
+          email_intro: 'A fase %{resource_title} está agora ativa para %{participatory_space_title}. Você pode vê-la a partir desta página:'
+          email_outro: Você recebeu esta notificação porque segue %{participatory_space_title}. Você pode parar de receber notificações seguindo o link anterior.
+          email_subject: Uma atualização para %{participatory_space_title}
+          notification_title: A fase %{resource_title} está agora ativa para <a href="%{resource_path}">%{participatory_space_title}</a>
+        step_changed:
+          email_intro: 'As datas para a fase %{resource_title} em %{participatory_space_title} foram atualizadas. Você pode vê-las a partir desta página:'
+          email_outro: Você recebeu esta notificação porque segue %{participatory_space_title}. Você pode parar de receber notificações seguindo o link anterior.
+          email_subject: Uma atualização para %{participatory_space_title}
+          notification_title: As datas para a fase <a href="%{resource_path}">%{resource_title}</a> em <a href="%{participatory_space_url}">%{participatory_space_title}</a> foram atualizadas.
+    participatory_processes:
+      show:
+        belongs_to_group: Este processo pertence a
+      admin:
+        participatory_processes:
+          form:
+            announcement_help: O texto que insere aqui será mostrado ao usuário logo abaixo das informações do processo.
+            select_participatory_process_type: Selecione um tipo de processo
+      participatory_processes:
+        filters:
+          all_types: Todos os tipos
+          filter_by: Exibir
+        show:
+          title: Sobre este processo

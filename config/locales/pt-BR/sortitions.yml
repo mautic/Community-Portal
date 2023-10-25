@@ -1,0 +1,8 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-sortitions/config/locales/en.yml
+pt-BR:
+  decidim:
+    sortitions:
+      admin:
+        sortitions:
+          new:
+            confirm: Ao pressionar o botão seguinte a plataforma registrará a data e a hora (com precisão de segundos) e junto com o jogo de dados, esta informação será usada para gerar uma seleção aleatória. A ação será irreversível, uma vez clicado o botão o resultado deste sorteio será publicado, juntamente com os dados inseridos neste formulário e não poderá ser modificado, favor verificar o conteúdo cuidadosamente

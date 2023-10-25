@@ -1,0 +1,209 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-meetings/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      agenda:
+        description: Descrição
+        duration: Duração
+        title: Título
+      close_meeting:
+        proposals: Propostas criadas na reunião
+      meeting:
+        available_slots: Vagas disponíveis para esta reunião
+        customize_registration_email: Personalizar o e-mail de registro
+        iframe_access_level: Nível de acesso do iframe
+        iframe_embed_type: Tipo do iframe embutido
+        registration_type: Tipo de inscrição
+        registration_form_enabled: Formulário de registro ativado
+        registration_terms: Termos de registro
+        registrations_enabled: Registros ativados
+        reserved_slots: Vagas reservadas para esta reunião
+        start_time: Hora de início
+        end_time: Hora de término
+        type_of_meeting: Tipo
+      meeting_agenda:
+        title: Título
+        visible: Visível
+      meeting_agenda_items:
+        description: Descrição
+        duration: Duração
+        title: Título
+      validate_registration_code:
+        code: Código
+    models:
+      decidim/meetings/meeting_registrations_enabled_event: Registros ativados
+      decidim/meetings/meeting_registrations_over_percentage_event: Registros acima do limite
+  activerecord:
+    models:
+      decidim/meetings/registration:
+        one: Registro
+        other: Registros
+  decidim:
+    admin:
+      filters:
+        meetings:
+          with_any_origin:
+            label: Origem
+            values:
+              official: Oficial
+              participants: Participante
+              user_group: Grupos de usuários
+    components:
+      meetings:
+        actions:
+          join: Junte-se à
+        settings:
+          global:
+            default_registration_terms: Termos de registro predefinidos
+            registration_code_enabled: Código de registro habilitado
+            scopes_enabled: Âmbitos ativados
+            maps_enabled: Mapas ativados
+    events:
+      meetings:
+        meeting_closed:
+          email_intro: 'Sua reunião "%{resource_title}" foi encerrada. Você pode ler as conclusões em sua página:'
+        meeting_registration_confirmed:
+          notification_title: A sua inscrição para a reunião <a href="%{resource_url}">%{resource_title}</a> foi confirmada. O seu código de registro é %{registration_code}.
+        registration_code_validated:
+          email_intro: O seu código de registro "%{registration_code}" para a reunião "%{resource_title}" foi validado.
+          email_outro: Recebeu esta notificação porque o seu código de registro para a reunião "%{resource_title}" foi validado.
+          email_subject: O seu código de registro "%{registration_code}" para a reunião "%{resource_title}" foi validado
+          notification_title: O seu código de registro "%{registration_code}" para a reunião <a href="%{resource_path}">%{resource_title}</a> foi validado.
+        registrations_enabled:
+          email_intro: 'A reunião "%{resource_title}" ativou os registros. Pode registar-se a partir da sua página:'
+          email_outro: Recebeu esta notificação porque segue a reunião "%{resource_title}". Pode deixar de segui-la a partir da hiperligação anterior.
+          email_subject: A reunião "%{resource_title}" ativou os registros.
+          notification_title: A reunião <a href="%{resource_path}">%{resource_title}</a> ativou os registros.
+    meetings:
+      actions:
+        close: Encerrar reunião
+        registrations: Registros
+        manage_poll: Gerenciar enquete
+      admin:
+        meetings:
+          edit:
+            title: Editar reunião
+          form:
+            available_slots_help: Deixe o valor 0 se você tiver vagas ilimitadas disponíveis
+            location_hints_help: 'Exemplo: o andar do edifício se for uma reunião presencial, ou a senha da reunião se for uma reunião virtual com acesso restrito.'
+            select_a_meeting_type: Por favor, selecione um tipo de reunião
+            select_a_registration_type: Por favor, selecione um tipo de inscrição
+            select_an_iframe_access_level: Por favor selecione um nível de acesso iframe
+            show_embedded_iframe_help: 'Apenas alguns poucos serviços permitem a incorporação em reuniões ou eventos ao vivo dos seguintes domínios: %{domains}'
+        meetings_poll:
+          form:
+            title: Editar questionário da enquete para %{questionnaire_for}
+          update:
+            invalid: Ocorreu um problema ao atualizar a enquete desta reunião
+            success: Enquete da reunião atualizado com sucesso
+        exports:
+          registrations: Registros
+        invite_join_meeting_mailer:
+          invite:
+            join: Junte-se à reunião '%{meeting_title}'
+        invites:
+          index:
+            registrations_disabled: Não pode convidar um participante porque os registros estão desativados.
+        registrations:
+          edit:
+            save: Salvar
+            validate: Confirmar
+            validate_registration_code: Confirmar código de registro
+          form:
+            registration_form: Formulário de registro
+            registrations_count:
+              one: Houve %{count} registro.
+              other: Houve %{count} registros.
+            title: Registros
+          update:
+            invalid: Ocorreu um problema ao guardar as configurações de registro.
+            success: Configurações de registro de reunião guardadas corretamente.
+          validate_registration_code:
+            invalid: Este código de registro é inválido.
+            success: Código de registro validado corretamente.
+      admin_log:
+        meeting:
+          export_registrations: "%{user_name} exportou os registros da reunião %{resource_name} no espaço %{space_name}"
+      calendar_modal:
+        calendar_url: URL do calendário
+        close_window: Fechar janela
+        copy_calendar_url: Copiar
+        copy_calendar_url_clarification: Copiar URL do calendário para a área de transferência
+        copy_calendar_url_copied: Copiado!
+        copy_calendar_url_description: Você pode ver todas as reuniões publicadas em sua aplicação de calendário ou fornecedor. Copie e cole esta URL em seu calendário usando a opção "Adicionar novo calendário a partir de uma URL".
+        copy_calendar_url_explanation: Observe que você está exportando uma seleção de reuniões, uma vez que existem filtros ativos. Se você deseja exportar todos eles, reinicie todos os filtros primeiro.
+        copy_calendar_url_message: A URL foi copiada com sucesso para a área de transferência.
+        export_calendar: Exportar calendário
+      close_meeting_reminder_mailer:
+        close_meeting_reminder:
+          body: A reunião <a href="%{meeting_path}">"%{meeting_title}"</a> está pendente de ser encerrada. Favor acrescentar um relatório da reunião usando o botão "Fechar reunião".
+          greetings: Saudações,<br/>%{organization_name}<br/><a href="%{organization_url}">%{organization_url}</a>
+          hello: Olá %{username},
+          subject: Agora você pode encerrar sua reunião com um relatório sobre a plataforma %{organization_name}
+      iframe_access_level:
+        all: Todos os visitantes
+        registered: Participantes registrados para esta reunião
+        signed_in: Somente participantes inscritos
+      iframe_embed_type:
+        embed_in_meeting_page: Embutir na página da reunião
+        none: Nenhum
+        open_in_live_event_page: Abrir na página de eventos ao vivo (com enquetes opcionais)
+        open_in_new_tab: Abrir URL em uma nova aba
+      mailer:
+        registration_mailer:
+          confirmation:
+            subject: O seu registro da reunião foi confirmado
+      meetings:
+        show:
+          join: Junte-se à reunião
+          registration_code_help_text: O seu código de registro
+          back: Voltar à lista
+        filters:
+          activity: Minha atividade
+          all: Todas
+          my_meetings: Minhas reuniões
+          type: Tipo
+          date_values:
+            all: Todas
+          type_values:
+            all: Todas
+            hybrid: Ambas
+            in_person: Presencial
+            online: Virtual
+        index:
+          click_here: Ver todas as reuniões
+          see_all: Ver todas as reuniões
+          see_all_withdrawn: Ver todas as reuniões retiradas
+          text_banner: Você está vendo a lista de reuniões retiradas por seus autores. %{go_back_link}.
+      models:
+        meeting:
+          fields:
+            id: ID
+      versions:
+        back_to_resource: Voltar para a reunião
+      registration_mailer:
+        confirmation:
+          confirmed_html: O seu registro para a reunião <a href="%{url}">%{title}</a> foi confirmado.
+          registration_code: O seu código de registro é %{code}.
+      type_of_meeting:
+        hybrid: Ambas
+        in_person: Presencial
+        online: Virtual
+      registration_type:
+        on_different_platform: Em uma plataforma diferente
+        on_this_platform: Nesta plataforma
+        registration_disabled: Inscrição desativada
+      content_blocks:
+        upcoming_meetings:
+          name: Próximas reuniões
+          upcoming_meetings: Próximas reuniões
+          view_all_meetings: Ver todas
+    participatory_spaces:
+      highlighted_meetings:
+        upcoming_meetings: Próximas reuniões
+      upcoming_meeting_for_card:
+        upcoming_meeting: Próxima reunião
+  devise:
+    mailer:
+      join_meeting:
+        subject: Convite para juntar-se a uma reunião

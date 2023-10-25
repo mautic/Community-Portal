@@ -1,0 +1,24 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-accountability/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      result:
+        parent_id: Origem
+      timeline_entry:
+        title: Título
+  decidim:
+    accountability:
+      admin:
+        timeline_entries:
+          index:
+            title: Registros do cronograma do projeto
+      models:
+        timeline_entry:
+          fields:
+            entry_date: Data
+            title: Título
+    components:
+      accountability:
+        settings:
+          global:
+            scopes_enabled: Âmbitos ativados

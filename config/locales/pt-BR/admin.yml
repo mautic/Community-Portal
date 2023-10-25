@@ -1,0 +1,230 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-admin/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      area:
+        area_type_id: Tipo de área
+      attachment:
+        weight: Posição de ordem
+      attachment_collection:
+        weight: Posição de ordem
+      content_block_attachment:
+        background_image: Imagem de fundo
+      external_domain:
+        value: URL
+      help_section:
+        content: Conteúdo
+      organization:
+        admin_terms_of_use_body: Conteúdo dos termos de uso de administrador
+        default_locale: Idioma padrão
+        enable_omnipresent_banner: Mostrar faixa onipresente
+        enable_participatory_space_filters: Ativar filtros do espaço participativo
+        force_users_to_authenticate_before_access_organization: Forçar usuários a se autenticarem antes de acessar a organização
+        header_snippets: Trechos de cabeçalho
+        host: Endereço de internet principal
+        logo: Logotipo
+        official_img_footer: Logotipo oficial do rodapé
+        official_img_header: Logotipo oficial do cabeçalho
+        secondary_hosts: Endereços de internet secundários
+        theme_color: Cor do tema
+        users_registration_mode: Modo de registro dos usuários
+      participatory_space_private_user:
+        email: E-mail
+        name: Nome
+      settings:
+        scope_id: Âmbito
+      static_page:
+        topic_id: Tópico
+        weight: Posição de ordem
+      static_page_topic:
+        weight: Posição de ordem
+    metrics:
+      blocked_users:
+        object: usuários bloqueados
+        title: Usuários bloqueados
+      reported_users:
+        object: usuários denunciados
+        title: Usuários denunciados
+      user_reports:
+        object: relatórios de usuário
+        title: Relatórios de usuário
+  activerecord:
+    models:
+      decidim/event_calendar:
+        other: Calendário
+      decidim/moderation: Moderação
+      decidim/user_moderation: Usuário denunciado
+  decidim:
+    admin:
+      actions:
+        attachment_collection:
+          new: Nova coleção de anexos
+        export-selection: Exportar seleção
+        manage: Gerenciar
+        share: Compartilhar
+        participatory_space_private_user:
+          new: Novo participante privado do espaço participativo
+        import: Importar
+        unpublish: Cancelar publicação
+        user:
+          new: Novo participante
+      admin_terms_of_use:
+        actions:
+          accept-BR: Eu concordo com os termos
+          are_you_sure: Você tem certeza de que quer recusar os termos de uso da administração?
+        required_review:
+          callout: Por favor, reserve um momento para revisar os Termos de Uso do Administrador. Caso contrário, você não será capaz de gerenciar a plataforma.
+      block_user:
+        new:
+          action: Bloquear conta e enviar justificativa
+          description: Bloquear um usuário torna a sua conta inutilizável. Você pode dar na sua justificativa orientações sobre o que poderia levar a considerar desbloquear o usuário.
+          justification: Justificativa
+          title: Bloquear usuário %{name}
+      components:
+        index:
+          headers:
+            scope: Âmbito do componente
+        form:
+          default_step_settings: Configurações da fase padrão
+          step_settings: Configurações da fase
+      conflicts:
+        title: Conflitos de verificação
+      dashboard:
+        show:
+          view_more_logs: Ver mais registros
+          welcome: Bem-vindo ao Painel de Administração.
+      filters:
+        moderated_users:
+          reports_reason_eq:
+            label: Motivo da denúncia
+        search_placeholder:
+          label: Motivo do relatório
+          name_or_nickname_or_email_cont: Pesquisar %{collection} por e-mail, nome ou nome de usuário.
+          reported_id_string_or_reported_content_cont: Pesquisar %{collection} por identificador de denúncia ou conteúdo.
+          title_cont: Pesquisar %{collection} por título.
+          user_name_or_user_email_cont: Pesquisar %{collection} por nome ou e-mail.
+          user_name_or_user_nickname_or_user_email_cont: Pesquisar %{collection} por e-mail, nome ou nome de usuário.
+      help_sections:
+        error: Ocorreu um problema ao atualizar as seções de ajuda
+        form:
+          save: Salvar
+        success: Seções de ajuda atualizadas com sucesso
+      impersonatable_users:
+        index:
+          view_logs: Ver registros
+      imports:
+        import_from_file: Importar de um arquivo
+      logs:
+        logs_list:
+          no_logs_yet: Ainda não há registros
+      menu:
+        admin_log: Registro de atividade de administração
+        dashboard: Painel de controle
+        external_domain_whitelist: Domínios externos permitidos
+        moderation: Moderações globais
+        users: Usuários
+        help_sections: Seções de ajuda
+        newsletters: Boletins informativos
+        reported_users: Usuários denunciados
+        assemblies: Assembléias
+      moderated_users:
+        index:
+          actions:
+            block: Bloquear usuário
+            title: Ações
+            unblock: Desbloquear usuário
+            unreport: Remover denúncia
+          name: Nome
+          nickname: Nome de usuário
+          reason: Motivo
+          reports: Contagem de denúncias
+          title: Lista de usuários denunciados
+      newsletters:
+        edit:
+          save_and_preview: Salvar e pré-visualizar
+        index:
+          all_users: 'Todos os usuários '
+          title: Boletins informativos
+        new:
+          save: Salvar
+        select_recipients_to_deliver:
+          all_users_help: Envia um boletim informativo para todos os usuários confirmados.
+          confirm_deliver: Tem certeza que deseja enviar este boletim informativo? Esta ação não pode ser desfeita.
+          followers_help: Envia um boletim informativo para todos os usuários confirmados que seguem quaisquer espaços participativos na lista.
+          participants_help: Envia um boletim informativo para todos os usuários confirmados que tenham participado em qualquer um dos espaços participativos selecionados na lista.
+          recipients_count: Este boletim informativo será enviado para <strong id='recipients_count'>%{count}</strong> usuários.
+          scopes_help: Envia um boletim informativo aos usuários que tenham qualquer um dos âmbitos selecionados ativados nas definições "Os meus interesses" das suas contas.
+          select_scopes: Filtro para os usuários que ativaram qualquer âmbito selecionado nas definições "Os meus interesses" das suas contas.
+          select_users: Selecione os usuários para os quais pretende enviar o boletim informativo
+          send_to_all_users: Enviar para todos os usuários
+          send_to_followers: Enviar para os seguidores
+          send_to_participants: Enviar para os participantes
+          warning: "<strong>Atenção:</strong> Este boletim informativo apenas será enviado para os usuários que tenham ativado a opção <em>Pretendo receber boletins informativo</em> nas suas definições de notificações."
+      officializations:
+        index:
+          block: Bloquear usuário
+          nickname: Nome de usuário
+          reports: Relatórios
+      organization_appearance:
+        edit:
+          update: Atualizar
+        form:
+          colors:
+            colors_warning_html: Advertência! A mudança destas cores pode quebrar os contrastes de acessibilidade. Você pode verificar o contraste de sua escolha com o <a href="%{link}">Verificador de Contraste WebAIM</a> ou outras ferramentas similares.
+            header_snippets_help: Use este campo para adicionar coisas ao cabeçalho HTML. O uso mais comum é integrar serviços de terceiros que exigem algum JavaScript ou CSS extra. Além disso, pode usá-lo para acrescentar meta tags adicionais ao HTML. Observe que isso só será exibido em páginas públicas, não na seção de administração.
+          omnipresent_banner_appearance_title: Editar faixa onipresente
+      organization_external_domain_whitelist:
+        edit:
+          update: Atualizar
+        external_domain:
+          down: Para baixo
+          external_domain: Domínio externo
+          remove: Remover
+          up: Para cima
+        form:
+          add: Adicionar à lista
+          title: Lista de domínios externos autorizados
+      organization_homepage:
+        edit:
+          active_content_blocks: Blocos de conteúdo ativos
+          inactive_content_blocks: Blocos de conteúdo inativos
+      participatory_space_private_users_csv_imports:
+        new:
+          destroy:
+            empty: Você não tem participantes privados.
+            title: Eliminar participantes privados
+          explanation: 'Envie seu arquivo CSV. Deve ter duas colunas com e-mail na primeira coluna do arquivo e nome na última coluna do arquivo (e-mail, nome) dos usuários que você deseja adicionar ao espaço participativo, sem cabeçalhos. Evite usar caracteres inválidos como `<>?%&^*#@()[]=+:;"{}\├` no nome de usuário.'
+          title: Envie seu arquivo CSV
+          upload: Enviar
+      scope_types:
+        new:
+          title: Novo tipo de âmbito
+      share_tokens:
+        actions:
+          share: Compartilhar
+        share_tokens:
+          empty: Não existem identificadores ativos
+          help: Estes identificadores são usados para compartilhar publicamente para qualquer usuário este recurso não publicado. Estarão escondidos quando o recurso estiver publicado. Clique no icone de compartilhar do identificador para visitar a URL comparltilhável.
+          title: Compartilhar identificadores
+      shared:
+        gallery:
+          add_images: Adicionar imagens
+          delete_image: Apagar imagem
+          edit_images: Editar imagens
+          gallery_legend: Adicionar uma galeria de imagens (Opcional)
+      titles:
+        admin_log: Registro de administrador
+        dashboard: Painel de Controle
+        users: Usuários
+    moderations:
+      actions:
+        unreport: Anular denúncia
+      models:
+        moderation:
+          fields:
+            reportable_id: ID
+  layouts:
+    decidim:
+      admin:
+        global_moderations:
+          title: Moderações globais

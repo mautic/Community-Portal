@@ -1,0 +1,33 @@
+# https://github.com/decidim/decidim/blob/develop/decidim-verifications/config/locales/en.yml
+pt-BR:
+  activemodel:
+    attributes:
+      authorization:
+        verification_attachment: Cópia digitalizada do seu documento
+      address:
+        full_address: Endereço completo
+      census_data:
+        file: Arquivo
+      revocations_before_date:
+        before_date: Antes da data
+        impersonated_only: Apenas personificado
+  decidim:
+    admin_log:
+      organization:
+        update_id_documents_config: "%{user_name} atualizou a configuração da autorização de Documentos de Identidade"
+    authorization_handlers:
+      admin:
+        csv_census:
+          help:
+            - Os administradores enviam um arquivo CSV com os e-mails dos participantes aceitos
+            - Apenas participantes com um e-mail nesse arquivo CSV podem ser verificados
+    verifications:
+      csv_census:
+        admin:
+          index:
+            data: Existem %{count} registros carregados no total. A última data de envio foi em %{due_date}
+            empty: Não há dados do censo. Use o formulário abaixo para importá-lo usando um arquivo CSV.
+          new:
+            file: "arquivo .csv com dados de e-mails"
+            info: 'Deverá ser um arquivo em formato CSV com apenas uma coluna com o endereço de e-mail:'
+            submit: Enviar arquivo

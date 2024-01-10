@@ -8,3 +8,5 @@ voca:
     decidim-only_forms:
       git: "https://git.octree.ch/decidim/decidim-module-only_forms"
       branch: "release/0.27-stable"
+    decidim-sitemaps:
+      git: "https://git.fpfis.tech.ec.europa.eu/future-of-europe/digit-cofe-libraries/digit-cofe-sitemap.git"

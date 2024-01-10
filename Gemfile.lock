@@ -1,4 +1,12 @@
 GIT
+  remote: https://git.fpfis.tech.ec.europa.eu/future-of-europe/digit-cofe-libraries/digit-cofe-sitemap.git
+  revision: 55faa024b7687ee0804545df494b862b1118dd11
+  specs:
+    decidim-sitemaps (0.1.0)
+      decidim-core
+      sitemap_generator
+
+GIT
   remote: https://git.octree.ch/decidim/decidim-module-only_forms
   revision: 153848b1a0cfc3ccacc84ef122e4f3d063844efb
   branch: release/0.27-stable
@@ -791,6 +799,8 @@ GEM
       simplecov (~> 0.19)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
+    sitemap_generator (6.3.0)
+      builder (~> 3.0)
     smart_properties (1.17.0)
     snaky_hash (2.0.1)
       hashie
@@ -889,6 +899,7 @@ DEPENDENCIES
   decidim-decidim_awesome (>= 0.10)
   decidim-dev (= 0.27.5)
   decidim-only_forms!
+  decidim-sitemaps!
   decidim-term_customizer!
   faker (~> 2.14)
   letter_opener_web (~> 2.0)

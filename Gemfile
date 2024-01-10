@@ -20,8 +20,6 @@ gem 'omniauth_openid_connect'
 
 gem "wicked_pdf", "~> 2.1"
 
-gem 'decidim-sitemaps'
-
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 

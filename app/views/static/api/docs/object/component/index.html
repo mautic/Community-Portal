@@ -1,84 +1,11 @@
 <div class="content"><h1>
-<a id="proposals" class="anchor" href="#proposals" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proposals</h1>
-<p>A proposals component of a participatory space.</p>
+<a id="component" class="anchor" href="#component" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Component</h1>
+<p>A base component with no particular specificities.</p>
 <h2>
 <a id="implements" class="anchor" href="#implements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implements</h2>
 <ul>
    <li><code><a href="/api/docs/interface/componentinterface">ComponentInterface</a></code></li>
 </ul>
-<h2>
-<a id="connections" class="anchor" href="#connections" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connections</h2>
-<div class="field-entry ">
-  <span id="proposals" class="field-name connection-name anchored">proposals (<code><a href="/api/docs/object/proposalconnection">ProposalConnection</a></code>)</span>
-  <div class="description-wrapper">
-   <p>List all proposals</p>
-     <table class="arguments">
-  <thead>
-  <tr>
-    <th>Argument</th>
-    <th>Type</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><code class="anchored">after</code></td>
-  <td>
-    <code><a href="/api/docs/scalar/string">String</a></code>
-  </td>
-  <td>
-    <p>Returns the elements in the list that come after the specified cursor.</p>
-   </td>
-  </tr>
-  <tr>
-  <td><code class="anchored">before</code></td>
-  <td>
-    <code><a href="/api/docs/scalar/string">String</a></code>
-  </td>
-  <td>
-    <p>Returns the elements in the list that come before the specified cursor.</p>
-   </td>
-  </tr>
-  <tr>
-  <td><code class="anchored">first</code></td>
-  <td>
-    <code><a href="/api/docs/scalar/int">Int</a></code>
-  </td>
-  <td>
-    <p>Returns the first <em>n</em> elements from the list.</p>
-   </td>
-  </tr>
-  <tr>
-  <td><code class="anchored">last</code></td>
-  <td>
-    <code><a href="/api/docs/scalar/int">Int</a></code>
-  </td>
-  <td>
-    <p>Returns the last <em>n</em> elements from the list.</p>
-   </td>
-  </tr>
-  <tr>
-  <td><code class="anchored">order</code></td>
-  <td>
-    <code><a href="/api/docs/input_object/proposalsort">ProposalSort</a></code>
-  </td>
-  <td>
-    <p>Provides several methods to order the results</p>
-   </td>
-  </tr>
-  <tr>
-  <td><code class="anchored">filter</code></td>
-  <td>
-    <code><a href="/api/docs/input_object/proposalfilter">ProposalFilter</a></code>
-  </td>
-  <td>
-    <p>Provides several methods to filter the results</p>
-   </td>
-  </tr>
-  </tbody>
-</table>
-  </div>
-</div>
 <h2>
 <a id="fields" class="anchor" href="#fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fields</h2>
 <div class="field-entry ">
@@ -103,32 +30,6 @@
   <span id="participatoryspace" class="field-name anchored">participatorySpace (<code><a href="/api/docs/object/participatoryspace">ParticipatorySpace!</a></code>)</span>
   <div class="description-wrapper">
    <p>The participatory space in which this component belongs to.</p>
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="proposal" class="field-name anchored">proposal (<code><a href="/api/docs/object/proposal">Proposal</a></code>)</span>
-  <div class="description-wrapper">
-   <p>Finds one proposal</p>
-     <table class="arguments">
-  <thead>
-  <tr>
-    <th>Argument</th>
-    <th>Type</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><code class="anchored">id</code></td>
-  <td>
-    <code><a href="/api/docs/scalar/id">ID!</a></code>
-  </td>
-  <td>
-    <p>The ID of the proposal</p>
-   </td>
-  </tr>
-  </tbody>
-</table>
   </div>
 </div></div>
 <div id="sidebar"><ul class="categories">

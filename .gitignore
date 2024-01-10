@@ -36,3 +36,5 @@
 public/uploads
 vendor
 .bash_history
+node_modules
+.npm

@@ -1,8 +1,5 @@
 voca:
   gems:
-    decidim-voca:
-      git: 'https://git.octree.ch/decidim/vocacity/tasks.git'
-      branch: 'release/0.26-stable'
     decidim-decidim_awesome:
       version: '>= 0.10'
     decidim-term_customizer:

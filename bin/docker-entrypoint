@@ -1,6 +1,7 @@
-#! /bin/sh
+#! /bin/bash
 set -e
 echo "Container initializing."
+
 # Execute all the scripts in the docker-entrypoint.d
 # directory, in filename order. 
 # The filenames needs to be in one of the following namespace:

@@ -1,0 +1,9 @@
+#!/bin/bash
+# Scripts to run daily
+cd $ROOT;
+# Remove expired download user data files
+bundle exec rails decidim:delete_data_portability_files 
+# Compute metrics
+bundle exec rails decidim:metrics:all
+# Compute open data
+bundle exec rails decidim:open_data:export

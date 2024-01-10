@@ -1,0 +1,8 @@
+vendor
+tmp
+.pm2
+.bundle
+.DS_Store
+storage
+Dockerfile*
+docker-compose*

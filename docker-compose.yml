@@ -2,16 +2,18 @@ version: '3.3'
 services:
   decidim:
     container_name: decidim
-    image: mautic/decidim
     build: .
     ports:
-      - 3000:3000
+      - 8080:8080
     volumes:
       - bundle:/home/decidim/app/vendor
       - .:/home/decidim/app
     environment:
+      RAILS_ENV: production
+      NODE_ENV: production
       DECIDIM_SYSTEM_EMAIL: "hello@myorg.com"
       DECIDIM_SYSTEM_PASSWORD: "my_insecure_password"
+      SECRET_KEY_BASE: "my_insecure_password"
       DATABASE_URL: "postgres://decidim:my_insecure_password@pg:5432/decidim"
       REDIS_URL: "redis://default:my_insecure_password@redis:6379/1"
       RAILS_SERVE_STATIC_FILES: "true"
@@ -19,7 +21,7 @@ services:
       SMTP_ADDRESS: "mailer"
       SMTP_PORT: "25"
       SMTP_AUTHENTICATION: "none"
-      PM2_RUN: decidim
+      PM2_RUN: decidim,sidekiq
       QUEUE_ADAPTER: sidekiq
       MEMCACHE_SERVERS: memcached:11211
     links:
@@ -30,33 +32,6 @@ services:
     networks:
       - private
       - default
-
-  sidekiq:
-    container_name: decidim_async
-    image: mautic/decidim
-    volumes:
-      - bundle:/home/decidim/app/vendor
-      - .:/home/decidim/app
-    environment:
-      DECIDIM_SYSTEM_EMAIL: "hello@myorg.com"
-      DECIDIM_SYSTEM_PASSWORD: "my_insecure_password"
-      DATABASE_URL: "postgres://decidim:my_insecure_password@pg:5432/decidim"
-      REDIS_URL: "redis://default:my_insecure_password@redis:6379/1"
-      RAILS_SERVE_STATIC_FILES: "true"
-      RAILS_FORCE_SSL: "false"
-      SMTP_ADDRESS: "mailer"
-      SMTP_PORT: "25"
-      SMTP_AUTHENTICATION: "none"
-      PM2_RUN: sidekiq
-      QUEUE_ADAPTER: sidekiq
-      MEMCACHE_SERVERS: memcached:11211
-    depends_on:
-      - pg
-      - redis
-      - mailer
-      - memcached
-    networks:
-      - private
 
   pg:
     image: postgres:15-alpine

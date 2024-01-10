@@ -1,0 +1,138 @@
+# This manifest restore a backup, it can restore backup for
+# the current environment, or from another environment. 
+# Thus, it is used for two things: 
+
+# 1. Restore a backup when we have an issue with an instance
+# 2. Setup a template backup to start an instance from a pre-installed configuration. 
+
+# The restore script will: 
+
+# - Take the backup, by the default the last one. 
+# - Apply the backup in the storage node group
+# - Go in the sql node group and dump current state, before restoring the state from the backup. 
+# - Go back in the storage node, and remove old sql dump. 
+# - Restart all the containers.
+
+jpsType: update
+jpsVersion: '1.7.4'
+
+name: Scripts/RestoreBackup
+id: voca-jps-restore-backup
+description:
+  short: Restore a backup
+categories:
+  - apps/platforms
+ssl: true
+ha: false
+skipNodeEmails: true
+skipEmail: true
+
+settings:
+  fields:
+    - name: SOURCE_ENV_NAME
+      type: string
+      caption: Env name of the source backup
+    - name: SOURCE_PASSWORD
+      type: string
+      caption: Password for the source backup
+    - name: RESTIC_REPOSITORY
+      type: string
+      caption: Host+bucket+region for the S3
+    - name: AWS_ACCESS_KEY_ID
+      type: string
+      caption: Key ID for S3
+    - name: AWS_SECRET_ACCESS_KEY
+      type: string
+      caption: Secret for S3
+    - name: RESTIC_PASSWORD
+      type: string
+      caption: Key used for restic encryption
+    - name: AWS_DEFAULT_REGION
+      type: string
+      caption: Default Region
+      default: 'ch-dk-2'
+    - name: HEAD_INDEX
+      type: string
+      caption: 1 for last, 2 for previous, etc.
+      default: '1'
+onInstall:
+  - restoreFiles
+  - restoreDb
+  - install
+actions:
+  restoreFiles:
+    - cmd[storage]:
+        - cd /data
+        - tar cfz "/tmp/data_dump-$(date +%Y-%m-%d-%H%M%S).tar.gz" -C /data .
+        - cd /
+        - rm -rf data/*
+    - cmd[storage]:
+        - yum-config-manager --add-repo
+          https://copr.fedorainfracloud.org/coprs/copart/restic/repo/epel-7/copart-restic-epel-7.repo
+        - yum install -y jq restic
+        # Setup own password for environment, and init a snapshot
+        # collection if does not exists.
+        - export OWN_REPOSITORY="s3:${settings.RESTIC_REPOSITORY}/${env.name}"
+        - export OWN_PASSWORD="${settings.RESTIC_PASSWORD}"
+        - export RESTIC_REPOSITORY="$OWN_REPOSITORY"
+        - export RESTIC_PASSWORD="$OWN_PASSWORD"
+        - export AWS_ACCESS_KEY_ID="${settings.AWS_ACCESS_KEY_ID}"
+        - export AWS_SECRET_ACCESS_KEY="${settings.AWS_SECRET_ACCESS_KEY}"
+        - export AWS_DEFAULT_REGION="${settings.AWS_DEFAULT_REGION}"
+        - if ! restic snapshots >/dev/null 2>&1; then restic init; fi
+        # Restic is initialized, now we can get the backup wanted,
+        # even the backup is else where.
+        - export
+          RESTIC_REPOSITORY="s3:${settings.RESTIC_REPOSITORY}/${settings.SOURCE_ENV_NAME}"
+        - export RESTIC_PASSWORD="${settings.SOURCE_PASSWORD}"
+        - export SNAPSHOT_ID=$(restic snapshots --latest ${settings.HEAD_INDEX}
+          --json | jq -r '.[0].id')
+        - restic restore $SNAPSHOT_ID --target /
+        # Add a new instance backup to the collection, with the
+        # result of the restoration.
+        - export RESTIC_REPOSITORY="$OWN_REPOSITORY"
+        - export RESTIC_PASSWORD="$OWN_PASSWORD"
+        - restic backup --tag "afterRestore" /data
+
+  restoreDb:
+    # Get the dump.sql file from storage dump and put it in the sql container.
+    - script: |
+        var result = jelastic.environment.file.read("${env.name}", session, "/data/decidim.sql", "docker", "storage");
+        var fileName = "/tmp/decidim.sql";
+        jelastic.environment.file.write("${env.name}", session, fileName, result.body, "docker", "sqldb");
+        return { "result": 0 };
+    # Dump actual database, then erase it, and import the dump.
+    - cmd[sqldb]:
+        - cd /tmp
+        - pg_dump --username $POSTGRES_USER -Fp $db > "/tmp/pg_dump-$(date
+          +%Y-%m-%d-%H%M%S).sql"
+        - psql --username=$POSTGRES_USER postgres -qAt -c "DROP DATABASE IF
+          EXISTS decidim"
+        - psql --username=$POSTGRES_USER postgres -qAt -c "CREATE DATABASE
+          decidim"
+        - psql --username $POSTGRES_USER decidim < decidim.sql
+        - rm -rf /tmp/decidim.sql
+    # Remove from storage any .sql files.
+    - cmd[storage]:
+        - cd /data
+        - tar cfz /tmp/pg_dump-$(date +%Y-%m-%d-%H%M%S).tar.gz -C /data ./*.sql
+        - rm -f /data/*.sql
+    - cmd[rpc]:
+        - cd $ROOT
+        - NODE_ENV=development npm i
+        - bundle config set --local with "development"
+        - bundle config set --local clean false
+        - bundle update timeout
+        - rm -rf public/decidim-packs
+        - NODE_ENV=development bundle exec rails assets:precompile
+        - chown -R decidim:decidim public
+
+  install:
+    # Restart to apply change in volumes
+    - forEach(nodes.cp):
+        - restartContainer[${@i.id}]
+    - forEach(nodes.rpc):
+        - restartContainer[${@i.id}]
+    - sleep: 1000
+success: |
+  Latest backup restored from ${settings.SOURCE_ENV_NAME}

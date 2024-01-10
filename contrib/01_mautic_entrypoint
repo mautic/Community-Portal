@@ -1,0 +1,10 @@
+#! /bin/sh
+set -e
+if ! pgrep -x "nginx" > /dev/null
+then
+    cd $ROOT
+    echo "    ✅ Run nginx"
+    nginx
+else
+    echo "    ✅ nginx is already running"
+fi

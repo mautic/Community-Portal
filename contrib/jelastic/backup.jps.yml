@@ -1,0 +1,92 @@
+jpsType: update
+jpsVersion: '1.7.4'
+
+name: Scripts/Backup
+id: backup-instance
+description:
+  short: Backup a voca instance
+categories:
+  - apps/platforms
+ssl: true
+ha: false
+skipNodeEmails: true
+
+settings:
+  fields:
+    - name: RESTIC_REPOSITORY
+      type: string
+      caption: Host+bucket+region for the S3
+    - name: AWS_ACCESS_KEY_ID
+      type: string
+      caption: Key ID for S3
+    - name: AWS_SECRET_ACCESS_KEY
+      type: string
+      caption: Secret for S3
+    - name: RESTIC_PASSWORD
+      type: string
+      caption: Key used for restic encryption
+    - name: AWS_DEFAULT_REGION
+      type: string
+      caption: Default Region
+      default: 'ch-dk-2'
+    - name: TAG
+      type: string
+      caption: Tag the backup
+      default: 'daily'
+onInstall:
+  - backupDb
+  - copyEnvs
+  - backup
+  - cleanup
+
+actions:
+  backupDb:
+    - cmd[sqldb]: |-
+        cd /tmp
+        mkdir -p "/tmp/dumps"
+        databases=$(psql --username $POSTGRES_USER postgres -qAt -c "SELECT datname FROM pg_database WHERE NOT datistemplate")
+        for db in $databases
+        do
+          pg_dump --username $POSTGRES_USER -Fp $db > "/tmp/dumps/$db.sql"
+        done;
+    - script: |
+        var result = jelastic.environment.file.getlist("${env.name}", session, "/tmp/dumps", "docker", "sqldb");
+        var sentFiles = [];
+        (result.keywords || []).forEach(function(keyword){
+          (keyword.files || []).forEach(function(file) {
+            if(!file.path || file.isdir) return;
+            var resultFile = jelastic.environment.file.read("${env.name}", session, file.path, "docker", "sqldb");
+            var fileName = "/data" + file.path.replace("/tmp/dumps", "");
+            jelastic.environment.file.write("${env.name}", session, fileName, resultFile.body, "docker", "storage");
+            sentFiles.push(fileName);
+          })
+        });
+        return { "result": sentFiles.length > 0 ? 0 : 1, "message": JSON.stringify(result) };
+    - cmd[sqldb]: rm -rf /tmp/dumps
+  copyEnvs:
+    - cmd[cp]:
+        - env > /tmp/.env-cp.bak
+    - script: |
+        var result = jelastic.environment.file.read("${env.name}", session, "/tmp/.env-cp.bak", "docker", "cp");
+        var fileName = "/data/.env-cp.bak";
+        jelastic.environment.file.write("${env.name}", session, fileName, result.body, "docker", "storage");
+        return { "result": 0 };
+  backup:
+    - cmd[storage]:
+        - yum-config-manager --add-repo
+          https://copr.fedorainfracloud.org/coprs/copart/restic/repo/epel-7/copart-restic-epel-7.repo
+        - yum install -y jq restic
+        - export
+          RESTIC_REPOSITORY="s3:${settings.RESTIC_REPOSITORY}/${env.name}"
+        - export AWS_ACCESS_KEY_ID="${settings.AWS_ACCESS_KEY_ID}"
+        - export AWS_SECRET_ACCESS_KEY="${settings.AWS_SECRET_ACCESS_KEY}"
+        - export RESTIC_PASSWORD="${settings.RESTIC_PASSWORD}"
+        - export AWS_DEFAULT_REGION="${settings.AWS_DEFAULT_REGION}"
+        - if ! restic snapshots >/dev/null 2>&1; then restic init; fi
+        - restic backup --tag "${settings.TAG}" /data
+  cleanup:
+    - cmd[storage]:
+        - rm -f /data/.env-cp.bak /data/*.sql
+
+success: |
+  A new backup tagged "${settings.TAG}" has been created for s3:${settings.RESTIC_REPOSITORY}/${env.name}

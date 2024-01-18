@@ -20,11 +20,13 @@ gem 'omniauth_openid_connect'
 
 gem "wicked_pdf", "~> 2.1"
 
+gem 'activerecord-session_store'
+
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
   gem "brakeman"
-  gem "decidim-dev", ENV.fetch("DECIDIM_VERSION", "0.27.3")
+  gem "decidim-dev", ENV.fetch("DECIDIM_VERSION", "0.27.5")
 end
 
 group :development do

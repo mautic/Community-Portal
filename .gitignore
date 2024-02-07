@@ -38,3 +38,4 @@ vendor
 .bash_history
 node_modules
 .npm
+.bash_history

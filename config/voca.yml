@@ -10,3 +10,6 @@ voca:
       branch: "release/0.27-stable"
     decidim-sitemaps:
       git: "https://git.fpfis.tech.ec.europa.eu/future-of-europe/digit-cofe-libraries/digit-cofe-sitemap.git"
+    decidim-voca:
+      git: 'https://git.octree.ch/decidim/vocacity/tasks.git'
+      branch: 'release/0.26-stable'

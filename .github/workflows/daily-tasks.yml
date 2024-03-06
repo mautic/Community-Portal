@@ -1,0 +1,29 @@
+name: Daily tasks for jelastic environment
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    container:
+      image: octree/jelastic-cli
+    steps:
+      - name: Run backup scripts on the environments
+        env:
+          RESTIC_REPOSITORY: ${{ secrets.RESTIC_REPOSITORY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          RESTIC_PASSWORD: ${{ secrets.RESTIC_PASSWORD }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          JELASTIC_LOGIN: ${{ secrets.JELASTIC_LOGIN }}
+          JELASTIC_PASSWORD: ${{ secrets.JELASTIC_PASSWORD }}
+          JELASTIC_HOSTER: ${{ secrets.JELASTIC_HOSTER }}
+          HOME: /root
+        run: |
+          ~/jelastic/users/authentication/signin --login $JELASTIC_LOGIN --password $JELASTIC_PASSWORD --platformUrl $JELASTIC_HOSTER
+          export MANIFEST="https://git.octree.ch/decidim/vocacity/system/-/raw/main/contrib/jelastic-manifests/scripts/dailyTasks.yml?ref_type=heads"
+          export SETTINGS="{\"RESTIC_REPOSITORY\":\"$RESTIC_REPOSITORY\", \"AWS_ACCESS_KEY_ID\":\"$AWS_ACCESS_KEY_ID\", \"AWS_SECRET_ACCESS_KEY\":\"$AWS_SECRET_ACCESS_KEY\", \"RESTIC_PASSWORD\":\"$RESTIC_PASSWORD\", \"AWS_DEFAULT_REGION\":\"$AWS_DEFAULT_REGION\"}"
+          ~/jelastic/marketplace/jps/install --envName mautic-proxy --jps "$MANIFEST" --settings "$SETTINGS"

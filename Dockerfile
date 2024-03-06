@@ -19,7 +19,8 @@ RUN apt-get update -yq \
   && bundle config set with "production" \
   && bundle config set no_cache "true" \
   && bundle config set deployment "false" \
-  && rm -rf vendor Gemfile.lock
+  && rm -rf vendor Gemfile.lock \
+  && rm -rf db/migrate/*
 
 COPY ./contrib/01_mautic_entrypoint /usr/local/share/docker-entrypoint.d/01_mautic_entrypoint
 COPY --chown=decidim:decidim ./contrib/nginx/nginx.conf /etc/nginx/nginx.conf

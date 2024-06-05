@@ -1,8 +1,6 @@
-version: '3.3'
 services:
   decidim:
     container_name: decidim
-    image: mautic/decidim
     build:
       context: .
       dockerfile: Dockerfile.dev

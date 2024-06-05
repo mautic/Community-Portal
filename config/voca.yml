@@ -12,3 +12,6 @@ voca:
       git: "https://git.fpfis.tech.ec.europa.eu/future-of-europe/digit-cofe-libraries/digit-cofe-sitemap.git"
     decidim-verifications-simple_impersonation:
       version: "~> 0.1.0"
+    decidim-theme: 
+      git: "https://git.octree.ch/decidim/vocacity/decidim-module-theme.git"
+      branch: "development"

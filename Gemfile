@@ -6,6 +6,7 @@ ruby RUBY_VERSION
 
 gem "decidim", ENV.fetch("DECIDIM_VERSION", "0.27.6")
 gem "decidim-templates", ENV.fetch("DECIDIM_VERSION", "0.27.6")
+
 # gem "decidim-conferences", ENV.fetch("DECIDIM_VERSION", "0.27.3")
 # gem "decidim-consultations", ENV.fetch("DECIDIM_VERSION", "0.27.3")
 # gem "decidim-elections", ENV.fetch("DECIDIM_VERSION", "0.27.3")
@@ -26,13 +27,16 @@ group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
   gem "brakeman"
-  gem "decidim-dev", ENV.fetch("DECIDIM_VERSION", "0.27.5")
+  gem "decidim-dev", ENV.fetch("DECIDIM_VERSION", "0.27.6")
 end
 
 group :development do
   gem "letter_opener_web", "~> 2.0"
   gem "listen", "~> 3.1"
   gem "web-console", "~> 4.2"
+  gem "rubocop"
+  gem "rubocop-rspec"
+  gem "rubocop-faker"
 end
 
 group :production do

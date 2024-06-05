@@ -22,7 +22,7 @@ RUN apt-get update -yq \
   && rm -rf vendor Gemfile.lock \
   && rm -rf db/migrate/*
 
-COPY ./contrib/01_mautic_entrypoint /usr/local/share/docker-entrypoint.d/01_mautic_entrypoint
+COPY ./contrib/01_mautic_entrypoint /docker-entrypoint.d/01_mautic_entrypoint
 COPY --chown=decidim:decidim ./contrib/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --chown=decidim:decidim . $ROOT
 RUN bundle install \

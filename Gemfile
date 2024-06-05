@@ -4,12 +4,12 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", ENV.fetch("DECIDIM_VERSION", "0.27.5")
+gem "decidim", ENV.fetch("DECIDIM_VERSION", "0.27.6")
+gem "decidim-templates", ENV.fetch("DECIDIM_VERSION", "0.27.6")
 # gem "decidim-conferences", ENV.fetch("DECIDIM_VERSION", "0.27.3")
 # gem "decidim-consultations", ENV.fetch("DECIDIM_VERSION", "0.27.3")
 # gem "decidim-elections", ENV.fetch("DECIDIM_VERSION", "0.27.3")
 # gem "decidim-initiatives", ENV.fetch("DECIDIM_VERSION", "0.27.3")
-# gem "decidim-templates", ENV.fetch("DECIDIM_VERSION", "0.27.3")
 
 gem "bootsnap", "~> 1.3"
 

@@ -1,8 +1,8 @@
-version: '3.3'
 services:
   decidim:
     container_name: decidim
     build: .
+    entrypoint: ""
     ports:
       - 8080:8080
     volumes:
@@ -20,8 +20,8 @@ services:
       SMTP_ADDRESS: "mailer"
       SMTP_PORT: "25"
       SMTP_AUTHENTICATION: "none"
-      PM2_RUN: decidim,sidekiq
-      QUEUE_ADAPTER: sidekiq
+      PM2_RUN: decidim
+      QUEUE_ADAPTER: async
       MEMCACHE_SERVERS: memcached:11211
     links:
       - pg

@@ -31,4 +31,4 @@ RUN export RAILS_SECRET_KEY_BASE=assets \
   && bundle install \
   && bundle config set deployment "true"
 
-CMD ["/bin/bash", "-c", "pm2-runtime start /home/decidim/app/config/ecosystem.config.js --only $PM2_RUN"]
+  CMD ["pm2-runtime", "start", "config/ecosystem.config.js", "--only", "$PM2_RUN"]

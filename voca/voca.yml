@@ -19,3 +19,6 @@ voca:
       version: "~> 2.0.0"
     omniauth_openid_connect:
       version: "~> 0.7.1"
+    decidim-spam_signal:
+      git: "https://git.octree.ch/decidim/decidim-module-spam_signal"
+      branch: "chore/version_decidim_027"

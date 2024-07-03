@@ -2,11 +2,12 @@ services:
   decidim:
     container_name: decidim
     build: .
-    entrypoint: ""
+    entrypoint: bash
+
     ports:
       - 8080:8080
     volumes:
-      - bundle:/home/decidim/app/vendor
+      - .:/home/decidim/app
     environment:
       RAILS_ENV: production
       NODE_ENV: production
@@ -72,7 +73,6 @@ services:
 volumes:
   pg-data: {}
   redis-data: {}
-  bundle: {}
 
 networks:
   private:

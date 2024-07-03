@@ -7,7 +7,6 @@ services:
       - 8080:8080
     volumes:
       - bundle:/home/decidim/app/vendor
-      - .:/home/decidim/app
     environment:
       RAILS_ENV: production
       NODE_ENV: production

@@ -1,7 +1,8 @@
 FROM octree/voca-decidim:0.27
 ENV PM2_RUN="decidim,sidekiq" \
   ROOT="/home/decidim/app" \
-  NODE_ENV=development
+  NODE_ENV=development \
+  RAILS_ENV=production
 
 WORKDIR $ROOT
 RUN apt-get update -yq \
@@ -16,21 +17,18 @@ RUN apt-get update -yq \
 # Configure bundle
   && cd $ROOT \
   && bundle config set path "vendor" \
-  && bundle config set with "production" \
+  && bundle config set without "development:test" \
   && bundle config set no_cache "true" \
   && bundle config set deployment "false" \
-  && rm -rf vendor Gemfile.lock \
+  && rm -rf vendor voca/Gemfile.lock \
   && rm -rf db/migrate/*
 
 COPY ./contrib/01_mautic_entrypoint /docker-entrypoint.d/01_mautic_entrypoint
+COPY ./contrib/99_recompile /docker-entrypoint.d/99_recompile
 COPY --chown=decidim:decidim ./contrib/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --chown=decidim:decidim . $ROOT
-RUN bundle install \
-  # Recompile assets.
-  && bundle exec rails decidim:webpacker:install \
-  && bundle exec rails decidim_decidim_awesome:webpacker:install \
-  && npm ci \
-  && bundle exec rails assets:precompile \
-  && rm -rf node_modules
+RUN export RAILS_SECRET_KEY_BASE=assets \
+  && bundle install \
+  && bundle config set deployment "true"
 
 CMD ["pm2-runtime", "start", "/home/decidim/app/config/ecosystem.config.js", "--only", "$PM2_RUN"]

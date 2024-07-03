@@ -15,3 +15,7 @@ voca:
     decidim-theme: 
       git: "https://git.octree.ch/decidim/vocacity/decidim-module-theme.git"
       branch: "development"
+    activerecord-session_store:
+      version: "~> 2.0.0"
+    omniauth_openid_connect:
+      version: "~> 0.7.1"

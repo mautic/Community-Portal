@@ -1,4 +1,4 @@
-FROM git.octree.ch:4567/decidim/vocacity/system/decidim-0.27
+FROM octree/voca-decidim:0.27
 ENV PM2_RUN="decidim,sidekiq" \
   ROOT="/home/decidim/app" \
   NODE_ENV=development

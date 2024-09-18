@@ -1,0 +1,33 @@
+name: Redeploy Decidim Image in Jelastic Infra
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        required: true
+        type: environment
+      tag:
+        description: 'Image Tag to redeploy'
+        required: true
+        default: 'latest' # You can set a default value or make it required without a default.
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    container:
+      image: mwienk/jelastic-cli
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Redeploy container in Jelastic
+        env:
+          JELASTIC_LOGIN: ${{ secrets.JELASTIC_LOGIN }}
+          JELASTIC_PASSWORD: ${{ secrets.JELASTIC_PASSWORD }}
+          JELASTIC_HOSTER: ${{ secrets.JELASTIC_HOSTER }}
+          ENVNAME: ${{ secrets.ENVNAME }}
+          USE_EXISTING_VOLUME: ${{ secrets.USE_EXISTING_VOLUME }} # Default to true if not set
+          HOME: /root
+          TAG: ${{ inputs.tag }}
+        run: |
+          /root/jelastic/users/authentication/signin --login $JELASTIC_LOGIN --password $JELASTIC_PASSWORD --platformUrl $JELASTIC_HOSTER
+          /root/jelastic/environment/control/redeploycontainersbygroup --envName $ENVNAME --nodeGroup cp --tag $TAG --useExistingVolumes ${USE_EXISTING_VOLUME:-true}

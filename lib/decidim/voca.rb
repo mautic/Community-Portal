@@ -2,7 +2,7 @@ require "yaml"
 module Decidim
   module Voca
     def self.each_gem(&block)
-      voca_config_file = File.join(ENV.fetch("ROOT"), "config/voca.yml")
+      voca_config_file = File.join(ENV.fetch("ROOT"), "voca/voca.yml")
       return unless File.exists? voca_config_file
       gems = YAML.load_file(voca_config_file)["voca"]["gems"]
       return if gems.nil?

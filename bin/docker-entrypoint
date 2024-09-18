@@ -9,6 +9,6 @@ echo "Container initializing."
 # > the LSB hierarchical and reserved namespaces (^_?([a-z0-9_.]+-)+[a-z0-9]+$); 
 # > the Debian cron script namespace (^[a-zA-Z0-9_-]+$).
 # > source: https://manpages.debian.org/jessie/debianutils/run-parts.8.en.html
-run-parts /usr/local/share/docker-entrypoint.d
+run-parts /docker-entrypoint.d
 echo "🚀 $@"
 exec "$@"

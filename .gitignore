@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+.pm2
+app/compiled_views
 .DS_Store
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -38,3 +40,4 @@ vendor
 .bash_history
 node_modules
 .npm
+.bash_history

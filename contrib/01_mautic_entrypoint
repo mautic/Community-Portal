@@ -1,10 +1,11 @@
 #! /bin/sh
 set -e
+echo "/docker-entrypoint.d/01_mautic_entrypoint:"
 if ! pgrep -x "nginx" > /dev/null
 then
     cd $ROOT
     echo "    ✅ Run nginx"
     nginx
-else
-    echo "    ✅ nginx is already running"
 fi
+wait-for-it -h "0.0.0.0" -p "8080" -t 60
+echo "    ✅ nginx is running"

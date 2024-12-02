@@ -2,4 +2,4 @@
 # Scripts to run monthly
 cd $ROOT;
 # Delete old registrations forms
-bundle exec rails decidim_meetings:clean_registration_forms
+# bundle exec rails decidim_meetings:clean_registration_forms

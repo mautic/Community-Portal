@@ -1,7 +1,8 @@
 voca:
   gems:
     decidim-decidim_awesome:
-      version: '>= 0.10'
+      git: 'https://github.com/decidim-ice/decidim-module-decidim_awesome'
+      branch: 'release/0.27-stable'
     decidim-term_customizer:
       git: 'https://github.com/mainio/decidim-module-term_customizer'
       branch: 'release/0.27-stable'
@@ -21,4 +22,4 @@ voca:
       version: "~> 0.7.1"
     decidim-spam_signal:
       git: "https://git.octree.ch/decidim/decidim-module-spam_signal"
-      branch: "chore/version_decidim_027"
+      branch: "main"

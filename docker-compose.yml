@@ -2,8 +2,8 @@ services:
   decidim:
     container_name: decidim
     build: .
-    entrypoint: bash
-
+    entrypoint: ""
+    command: sleep infinity
     ports:
       - 8080:8080
     volumes:
@@ -60,6 +60,8 @@ services:
     image: memcached:1.6.16-alpine
     networks:
       - private
+    command:
+      - '--memory-limit=1024'
 
   mailer:
     image: tophfr/mailcatcher

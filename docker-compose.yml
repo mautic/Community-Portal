@@ -34,7 +34,7 @@ services:
       - default
 
   pg:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     volumes:
       - pg-data:/var/lib/postgresql/data
     environment:

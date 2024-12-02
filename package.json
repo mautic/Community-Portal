@@ -5,7 +5,7 @@
     "@decidim/browserslist-config": "^0.27.9",
     "@decidim/core": "^0.27.9",
     "@decidim/elections": "^0.27.9",
-    "@decidim/webpacker": "^0.27.9",
+    "@decidim/webpacker": "^0.29.1",
     "@rails/actioncable": "^6.1.710",
     "codemirror": "^5.65.18",
     "eslint-plugin-promise": "^3.8.0",

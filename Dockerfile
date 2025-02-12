@@ -1,4 +1,4 @@
-FROM octree/voca-decidim:0.27-bullseye
+FROM octree/voca-decidim:0.29-bullseye
 ENV PM2_RUN="decidim,daily,monthly" \
   ROOT="/home/decidim/app" \
   NODE_ENV=development \
@@ -23,7 +23,9 @@ RUN NODE_MAJOR_VERSION=$(cut -d '.' -f1 /home/decidim/app/.node-version) \
     && apt-get update -yq \
     && apt-get install -yq --no-upgrade nodejs \
     && export SECRET_KEY_BASE=assets \
+    && bundle config set deployment false \
     && bundle install \
+    && patch-gemlock \
     && apt-get update -yq \
     # Install native deps
     && apt-get install -yq nginx \ 

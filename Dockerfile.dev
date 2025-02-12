@@ -1,4 +1,4 @@
-FROM hfroger/decidim:0.27-dev
+FROM hfroger/decidim:0.29-dev
 ENV RAILS_ENV=development \
     NODE_ENV=development \
     ROOT=/home/decidim/app

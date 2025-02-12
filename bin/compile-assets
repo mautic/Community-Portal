@@ -1,0 +1,83 @@
+#!/bin/bash
+
+set -e  # Exit immediately on error
+
+# Default values
+FORCE=false
+QUIET=false
+UPGRADE=false
+HELP=false
+ROOT=$(pwd) # Default to current directory
+
+# Print usage
+usage() {
+  echo "Usage: $0 [-f|--force] [-q|--quiet] [--upgrade] [-h|--help]"
+  echo ""
+  echo "Options:"
+  echo "  -f, --force         If 'public/decidim-packs' exists, move it to 'public/<oldfilename>.<date>.bak' and compile"
+  echo "  -q, --quiet         Suppress all log output"
+  echo "      --upgrade       Run 'bundle exec rails decidim:upgrade' before compiling assets"
+  echo "  -h, --help          Display this help message"
+  exit 0
+}
+
+# Parse arguments
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    -f|--force) FORCE=true ;;
+    -q|--quiet) QUIET=true ;;
+    --upgrade) UPGRADE=true ;;
+    -h|--help) HELP=true ;;
+    *) echo "Unknown parameter passed: $1"; usage ;;
+  esac
+  shift
+done
+
+# Display help if needed
+if [ "$HELP" = true ]; then
+  usage
+fi
+
+# Log function, suppress output if QUIET is enabled
+log() {
+  if [ "$QUIET" = false ]; then
+    echo "$1"
+  fi
+}
+
+# Force option: Backup and move decidim-packs
+if [ "$FORCE" = true ]; then
+  if [ -d "$ROOT/public/decidim-packs" ]; then
+    TIMESTAMP=$(date +%Y%m%d%H%M%S)
+    BACKUP_DIR="$ROOT/public/decidim-packs.$TIMESTAMP.bak"
+    log "Backing up 'public/decidim-packs' to '$BACKUP_DIR'..."
+    mv "$ROOT/public/decidim-packs" "$BACKUP_DIR"
+  else
+    log "'public/decidim-packs' does not exist, compiling."
+  fi
+else
+  if [ -d "$ROOT/public/decidim-packs" ]; then
+    log "'public/decidim-packs' already exists, nothing to do."
+    log "use '--force', '-f' options to force recompilation"
+    exit 0
+  fi
+fi
+
+# Upgrade option
+if [ "$UPGRADE" = true ]; then
+  log "Running 'bundle exec rails decidim:upgrade'..."
+  bundle exec rails decidim:upgrade
+fi
+
+# Install dependencies and precompile assets
+log "Installing Node.js dependencies..."
+NODE_ENV=development npm ci
+
+log "Precompiling Rails assets..."
+NODE_ENV=development RAILS_ENV=production bundle exec rails assets:precompile
+
+# Cleanup
+log "Cleaning up temporary files..."
+rm -rf .yarn .npm yarn.lock node_modules
+
+log "Assets compilation completed successfully."

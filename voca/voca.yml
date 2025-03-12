@@ -2,11 +2,10 @@ voca:
   gems:
     decidim-decidim_awesome:
       git: 'https://github.com/decidim-ice/decidim-module-decidim_awesome'
-      branch: 'upgrade-0.29'
+      tag: 'v0.12.0'
     decidim-term_customizer:
       git: 'https://github.com/octree-gva/decidim-module-term_customizer'
       branch: 'fix/ui-decidim-0.29'
-
     # decidim-only_forms:
     #   git: "https://git.octree.ch/decidim/decidim-module-only_forms"
     #   branch: "release/0.27-stable"
@@ -19,6 +18,6 @@ voca:
     #   version: "~> 2.1.0"
     omniauth_openid_connect:
       version: "~> 0.8.0"
-    # decidim-spam_signal:
-    #   git: "https://git.octree.ch/decidim/decidim-module-spam_signal"
-    #   branch: "main"
+    decidim-spam_signal:
+      git: "https://git.octree.ch/decidim/decidim-module-spam_signal"
+      branch: "main"

@@ -2,4 +2,4 @@
 set -e
 
 sed -i '/psych (.*)$/d' $ROOT/voca/Gemfile.lock
-sed -i '/openssl (.*)$/d' $ROOT/voca/Gemfile.lock
+# sed -i '/openssl (.*)$/d' $ROOT/voca/Gemfile.lock

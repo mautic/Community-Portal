@@ -19,17 +19,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
-  port: <%= ENV.fetch("DATABASE_PORT") { "5432" } %>
-  username: <%= ENV.fetch("DATABASE_USERNAME") { "" } %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD") { "" } %>
+  url: <%= ENV['DATABASE_URL'] %>
 
 development:
   <<: *default
-  database: app_development
+production:
+  <<: *default
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -64,26 +59,3 @@ development:
 test:
   <<: *default
   database: app_test<%= ENV.fetch('TEST_ENV_NUMBER', "") %>
-
-# As with config/secrets.yml, you never want to store sensitive information,
-# like your database password, in your source code. If your source code is
-# ever seen by anyone, they now have access to your database.
-#
-# Instead, provide the password as a unix environment variable when you boot
-# the app. Read http://guides.rubyonrails.org/configuring.html#configuring-a-database
-# for a full rundown on how to provide these environment variables in a
-# production deployment.
-#
-# On some platform providers, you may have a full connection URL
-# available as an environment variable. For example:
-#
-#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
-#
-# You can use this database configuration with:
-#
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-
-production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if defined?(Decidim::Sitemaps)
   Decidim::Sitemaps.configure do |config|
     config.users = { enabled: false, changefreq: "daily", priority: 0.5 }

@@ -48,7 +48,7 @@ module Decidim
     def create_or_find_user
       @user = User.find_or_initialize_by(
         email: verified_email,
-        organization: organization
+        organization:
       )
 
       if @user.persisted?
@@ -76,7 +76,7 @@ module Decidim
       @user.identities.create!(
         provider: form.provider,
         uid: form.uid,
-        organization: organization
+        organization:
       )
     end
 

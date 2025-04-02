@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-# This migration comes from decidim_decidim_awesome (originally 20240531224204)
 
+# This migration comes from decidim_decidim_awesome (originally 20240531224204)
 class AddDecidimAwesomeProposalPrivateFields < ActiveRecord::Migration[6.0]
   class ProposalExtraField < ApplicationRecord
     self.table_name = :decidim_awesome_proposal_extra_fields

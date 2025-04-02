@@ -5,12 +5,16 @@ services:
     entrypoint: ""
     command: sleep infinity
     ports:
+      # nginx, expose only this port in production
       - 8080:8080
+      # development ports
+      - 3000:3000
+      - 3035:3035
     volumes:
       - .:/home/decidim/app
     environment:
-      RAILS_ENV: production
-      NODE_ENV: production
+      RAILS_ENV: development
+      NODE_ENV: development
       DECIDIM_SYSTEM_EMAIL: "hello@myorg.com"
       DECIDIM_SYSTEM_PASSWORD: "my_insecure_password"
       SECRET_KEY_BASE: "my_insecure_password"
@@ -24,7 +28,7 @@ services:
       PM2_RUN: decidim
       QUEUE_ADAPTER: async
       MEMCACHE_SERVERS: memcached:11211
-    links:
+    depends_on:
       - pg
       - redis
       - mailer
@@ -37,6 +41,7 @@ services:
     image: postgres:16-alpine
     volumes:
       - pg-data:/var/lib/postgresql/data
+      - ./.dump:/dump
     environment:
       POSTGRES_PASSWORD: "my_insecure_password"
       POSTGRES_USER: "decidim"

@@ -83,7 +83,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/imaabasiee"><img src="https://avatars.githubusercontent.com/u/105015897?v=4?s=100" width="100px;" alt="Ima-Abasi E. Effiong"/><br /><sub><b>Ima-Abasi E. Effiong</b></sub></a><br /><a href="#userTesting-imaabasiee" title="User Testing">📓</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/imaabasiee"><img src="https://avatars.githubusercontent.com/u/105015897?v=4?s=100" width="100px;" alt="Ima-Abasi E. Effiong"/><br /><sub><b>Ima-Abasi E. Effiong</b></sub></a><br /><a href="#userTesting-imaabasiee" title="User Testing">📓</a> <a href="https://github.com/mautic/Community-Portal/issues?q=author%3Aimaabasiee" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>

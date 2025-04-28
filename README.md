@@ -1,4 +1,7 @@
 # Mautic community portal
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 Mautic's community portal is the place where we organize everything within the project that relates to governance and community.
 
 Whether you want to participate in a vote for a new member for the Mautic council,  get involved in a debate about a feature,  find out where your local meetup groups are,  or just learn a bit more about how decisions are made in this open source project,  this is the place for you!
@@ -69,3 +72,25 @@ Access:
 - localhost:3000 for the rails server
 - localhost:3000/letter_opener for the mail catcher
 - credentials are the default ones (see decidim documentation)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/imaabasiee"><img src="https://avatars.githubusercontent.com/u/105015897?v=4?s=100" width="100px;" alt="Ima-Abasi E. Effiong"/><br /><sub><b>Ima-Abasi E. Effiong</b></sub></a><br /><a href="#userTesting-imaabasiee" title="User Testing">📓</a> <a href="https://github.com/mautic/Community-Portal/issues?q=author%3Aimaabasiee" title="Bug reports">🐛</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

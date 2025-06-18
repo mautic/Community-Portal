@@ -22,7 +22,7 @@ RUN NODE_MAJOR_VERSION=$(cut -d '.' -f1 /home/decidim/app/.node-version) \
     && curl -fsSL https://deb.nodesource.com/setup_$NODE_MAJOR_VERSION.x | bash - \
     && if dpkg -l | grep -qw nodejs; then apt-get purge -y nodejs; fi \
     && apt-get update -yq \
-    && apt-get install -yq --no-upgrade nodejs nginx \
+    && apt-get install -yq --no-upgrade nodejs nginx libjpeg-dev libpng-dev libtiff-dev libwebp-dev libvips libvips-tools \
     && export SECRET_KEY_BASE=assets \
     # Clean installation clutters
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \

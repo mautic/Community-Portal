@@ -17,20 +17,22 @@ services:
       NODE_ENV: development
       DECIDIM_SYSTEM_EMAIL: "hello@myorg.com"
       DECIDIM_SYSTEM_PASSWORD: "my_insecure_password"
+      DECIDIM_AVAILABLE_LOCALES: "en,pt-BR,de,es"
       SECRET_KEY_BASE: "my_insecure_password"
       DATABASE_URL: "postgres://decidim:my_insecure_password@pg:5432/decidim"
-      REDIS_URL: "redis://default:my_insecure_password@redis:6379/1"
       RAILS_SERVE_STATIC_FILES: "true"
-      RAILS_FORCE_SSL: "false"
+      DECIDIM_FORCE_SSL: "false"
       SMTP_ADDRESS: "mailer"
       SMTP_PORT: "25"
       SMTP_AUTHENTICATION: "none"
       PM2_RUN: decidim
       QUEUE_ADAPTER: async
       MEMCACHE_SERVERS: memcached:11211
+      ETHERPAD_API_KEY: "insecure-Mdr6rKJG7w8EYWwDNzN1xk7sTXw67DSZ"
+      ETHERPAD_API_VERSION: 1
+      ETHERPAD_SERVER: "http://etherpad.localhost:9001"
     depends_on:
       - pg
-      - redis
       - mailer
       - memcached
     networks:
@@ -46,20 +48,59 @@ services:
       POSTGRES_PASSWORD: "my_insecure_password"
       POSTGRES_USER: "decidim"
       POSTGRES_DB: "decidim"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "decidim", "-d", "decidim"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - private
 
-  redis:
-    image: redis:7-alpine3.18
+  # Create the etherpad database if not exists
+  etherpad-create-db:
+    image: postgres:16-alpine
     command:
-      - 'redis-server'
-      - '--loglevel warning'
-      - '--appendonly yes' # AOF mode
-      - '--requirepass my_insecure_password' # min 64 chars in prod.
+      - sh
+      - -c
+      - |
+        until pg_isready -h pg -U decidim; do sleep 1; done
+        psql -h pg -U decidim -tc "SELECT 1 FROM pg_database WHERE datname = 'etherpad'" | grep -q 1 || psql -h pg -U decidim -c "CREATE DATABASE etherpad;"
     volumes:
-      - redis-data:/data
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      PGPASSWORD: "my_insecure_password"
+    depends_on:
+      - pg
     networks:
       - private
+
+  etherpad:
+    image: etherpad/etherpad:1.9.1
+    ports:
+      - 9001:9001
+    environment:
+      DB_TYPE: "postgres"   
+      DB_PORT: "5432"
+      DB_NAME: "etherpad"
+      DB_PASS: "my_insecure_password"
+      DB_USER: "decidim"
+      DB_HOST: "pg"
+      ADMIN_USER: "etherpad"
+      ADMIN_PASSWORD: "my_insecure_password"
+      TITLE: "Mautic Local Dev"
+      SESSION_REQUIRED: false
+      PAD_OPTIONS_SHOW_CHAT: false
+      EDIT_ONLY: false
+      DISABLE_IP_LOGGING: true
+      DEFAULT_PAD_TEXT: "Pad provided by Mautic Local Dev"
+      API_KEY: "insecure-Mdr6rKJG7w8EYWwDNzN1xk7sTXw67DSZ"      
+    depends_on:
+      # start only after DB is created and ready
+      etherpad-create-db:
+        condition: service_completed_successfully
+    networks:
+      - private
+      - default
 
   memcached:
     image: memcached:1.6.16-alpine

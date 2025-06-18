@@ -47,7 +47,7 @@ node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
+./voca/bin/*
 # Symlinks
 Gemfile
 Gemfile.lock

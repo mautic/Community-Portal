@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_02_105366) do
+ActiveRecord::Schema[7.0].define(version: 2025_06_18_080060) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -42,6 +42,35 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_02_105366) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "anti_spam_conditions", force: :cascade do |t|
+    t.string "condition_type"
+    t.string "name"
+    t.bigint "decidim_organization_id"
+    t.jsonb "settings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "index_anti_spam_conditions_on_decidim_organization_id"
+  end
+
+  create_table "anti_spam_flows", force: :cascade do |t|
+    t.string "name"
+    t.string "trigger_type"
+    t.bigint "decidim_organization_id"
+    t.jsonb "action_settings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "index_anti_spam_flows_on_decidim_organization_id"
+  end
+
+  create_table "anti_spam_flows_conditions", force: :cascade do |t|
+    t.bigint "anti_spam_flow_id", null: false
+    t.bigint "anti_spam_condition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anti_spam_condition_id"], name: "index_anti_spam_flows_conditions_on_anti_spam_condition_id"
+    t.index ["anti_spam_flow_id"], name: "index_anti_spam_flows_conditions_on_anti_spam_flow_id"
   end
 
   create_table "decidim_accountability_results", id: :serial, force: :cascade do |t|
@@ -1787,6 +1816,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_02_105366) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "anti_spam_conditions", "decidim_organizations"
+  add_foreign_key "anti_spam_flows", "decidim_organizations"
+  add_foreign_key "anti_spam_flows_conditions", "anti_spam_conditions"
+  add_foreign_key "anti_spam_flows_conditions", "anti_spam_flows"
   add_foreign_key "decidim_area_types", "decidim_organizations"
   add_foreign_key "decidim_areas", "decidim_area_types", column: "area_type_id"
   add_foreign_key "decidim_areas", "decidim_organizations"

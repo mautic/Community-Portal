@@ -21,6 +21,9 @@ end
 gem "airbrake", "~> 13.0"
 gem "dalli"
 gem "sidekiq"
+gem "image_processing", "~> 1.2"
+gem "next_gen_images", git: "https://github.com/froger/next_gen_images", 
+    branch: "chore/rails-7.0"
 
 require File.join(ENV.fetch("ROOT"), "lib/decidim/voca.rb")
 Decidim::Voca.each_gem do |gem_config, gem_attributes|

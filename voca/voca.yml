@@ -10,14 +10,7 @@ voca:
       version: "~> 0.8.0"
     decidim-spam_signal:
       git: "https://git.octree.ch/decidim/decidim-module-spam_signal"
-      tag: 'v0.0.3'
-    # decidim-only_forms:
-    #   git: "https://git.octree.ch/decidim/decidim-module-only_forms"
-    #   branch: "release/0.27-stable"
-    # decidim-sitemaps:
-    #   git: "https://git.fpfis.tech.ec.europa.eu/future-of-europe/digit-cofe-libraries/digit-cofe-sitemap.git"
-    #   branch: "master"
-    # decidim-verifications-simple_impersonation:
-    #   version: "~> 0.1.0"
-    # activerecord-session_store:
-    #   version: "~> 2.1.0"
+      tag: 'v1.0.0'
+    decidim-voca: 
+      git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-voca"
+      branch: "fix-resource-image-path"

@@ -2,7 +2,7 @@ voca:
   gems:
     decidim-decidim_awesome:
       git: 'https://github.com/decidim-ice/decidim-module-decidim_awesome'
-      tag: 'v0.12.0'
+      tag: 'v0.12.3'
     decidim-term_customizer:
       git: 'https://github.com/octree-gva/decidim-module-term_customizer'
       branch: 'fix/ui-decidim-0.29'
@@ -10,7 +10,7 @@ voca:
       version: "~> 0.8.0"
     decidim-spam_signal:
       git: "https://git.octree.ch/decidim/decidim-module-spam_signal"
-      tag: 'v1.0.0'
+      tag: 'v1.0.3'
     decidim-voca: 
       git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-voca"
-      branch: "fix-resource-image-path"
+      tag: "v0.0.9"

@@ -1,9 +1,9 @@
 GIT
   remote: https://git.octree.ch/decidim/decidim-module-spam_signal
-  revision: a83758b4d03dfb6a8852a87627071d7b16a81e56
-  tag: v1.0.0
+  revision: df56176f1ecf59343a134bb1a0ca9fd579dfeea9
+  tag: v1.0.3
   specs:
-    decidim-spam_signal (1.0.0)
+    decidim-spam_signal (1.0.2)
       decidim-admin (>= 0.26, < 0.30)
       decidim-comments (>= 0.26, < 0.30)
       decidim-core (>= 0.26, < 0.30)
@@ -12,23 +12,26 @@ GIT
 
 GIT
   remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-voca
-  revision: 63ebc2b4f3ae1137bad3a19a4a5eca94ceb75085
-  branch: fix-resource-image-path
+  revision: 793fd6712109446d0b6dbcf1342eb86e5678ffcc
+  tag: v0.0.9
   specs:
-    decidim-voca (0.0.2)
+    decidim-voca (0.0.9)
       decidim-admin (>= 0.29, < 0.30)
+      decidim-decidim_awesome (~> 0.12.3)
       deface (~> 1.9)
       faker (~> 3.5.1)
+      good_job (~> 4.5.1)
       image_processing (~> 1.2)
       next_gen_images (~> 1.1.1)
-      vips (~> 8.15.1)
+      ruby-vips (~> 2.2.4)
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome
-  revision: 9da093f854b1bafb812ca093e7e61a61afe21369
-  tag: v0.12.0
+  revision: b4c50032542f7295163645b04f494fd00f8c87bb
+  tag: v0.12.3
   specs:
-    decidim-decidim_awesome (0.12.0)
+    decidim-decidim_awesome (0.12.3)
+      active_hashcash (~> 0.4.0)
       decidim-admin (>= 0.29.1, < 0.30)
       decidim-core (>= 0.29.1, < 0.30)
       deface (>= 1.5)
@@ -36,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: de1ce979a72a64091e2fdb25f55e50c70cb5ca04
+  revision: 5c58e8daa9dfc66f006342aaca4f62737289961b
   branch: release/0.29-stable
   specs:
     decidim (0.29.4)
@@ -211,14 +214,18 @@ GIT
 
 GIT
   remote: https://github.com/froger/deface
-  revision: 21f203d67de8428dfa6394e25d953a315adcd6a9
+  revision: fe80c6bc7166d3adb5e99a5ab46a81138f52840a
   branch: fix/js-overrides
   specs:
     deface (1.9.0)
-      actionview (>= 5.2)
+      actionview (>= 7.0)
+      base64
+      bigdecimal
+      drb
+      mutex_m
       nokogiri (>= 1.6)
       polyglot
-      railties (>= 5.2)
+      railties (>= 7.0)
       rainbow (>= 2.1.0)
 
 GIT
@@ -287,6 +294,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hashcash (0.4.0)
+      rails (>= 5.2.0)
     active_link_to (1.0.5)
       actionpack
       addressable
@@ -402,6 +411,7 @@ GEM
     doorkeeper (5.8.2)
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
+    drb (2.2.3)
     email_validator (2.2.4)
       activemodel
     erb_lint (0.4.0)
@@ -415,18 +425,20 @@ GEM
       temple
     erubi (1.13.1)
     escape_utils (1.3.0)
-    excon (1.2.7)
+    et-orbi (1.3.0)
+      tzinfo
+    excon (1.3.0)
       logger
     extended-markdown-filter (0.7.0)
       html-pipeline (~> 2.9)
-    factory_bot (6.5.4)
+    factory_bot (6.5.5)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.5.0)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faker (3.5.1)
+    faker (3.5.2)
       i18n (>= 1.8.11, < 2)
-    faraday (2.13.1)
+    faraday (2.13.4)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -448,18 +460,29 @@ GEM
       mime-types
     fog-local (0.9.0)
       fog-core (>= 1.27, < 3.0)
-    formatador (1.1.0)
+    formatador (1.2.0)
+      reline
     foundation_rails_helper (4.0.1)
       actionpack (>= 4.1, < 7.1)
       activemodel (>= 4.1, < 7.1)
       activesupport (>= 4.1, < 7.1)
       railties (>= 4.1, < 7.1)
+    fugit (1.11.2)
+      et-orbi (~> 1, >= 1.2.11)
+      raabro (~> 1.4)
     gemoji (3.0.1)
     geocoder (1.8.5)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    good_job (4.5.1)
+      activejob (>= 6.1.0)
+      activerecord (>= 6.1.0)
+      concurrent-ruby (>= 1.3.1)
+      fugit (>= 1.11.0)
+      railties (>= 6.1.0)
+      thor (>= 1.0.0)
     graphql (2.2.17)
       base64
     graphql-docs (4.0.0)
@@ -491,7 +514,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.8, >= 1.8.1)
       terminal-table (>= 1.5.1)
-    icalendar (2.11.1)
+    icalendar (2.11.2)
       base64
       ice_cube (~> 0.16)
       logger
@@ -502,16 +525,16 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
-    io-console (0.8.0)
-    json (2.12.2)
-    json-jwt (1.16.7)
+    io-console (0.8.1)
+    json (2.13.2)
+    json-jwt (1.17.0)
       activesupport (>= 4.2)
       aes_key_wrap
       base64
       bindata
       faraday (~> 2.0)
       faraday-follow_redirects
-    jwt (2.10.1)
+    jwt (3.1.2)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -544,16 +567,17 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2025.0617)
+    mime-types-data (3.2025.0826)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.5)
     msgpack (1.8.0)
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
+    mutex_m (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.8)
+    net-imap (0.5.9)
       date
       net-protocol
     net-pop (0.1.2)
@@ -563,7 +587,7 @@ GEM
     net-smtp (0.3.4)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.8-x86_64-linux-gnu)
+    nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -621,14 +645,14 @@ GEM
       webfinger (~> 2.0)
     openssl (3.3.0)
     orm_adapter (0.5.0)
-    ostruct (0.6.2)
+    ostruct (0.6.3)
     paper_trail (12.3.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
     parallel (1.27.0)
     parallel_tests (4.10.1)
       parallel
-    parser (3.3.8.0)
+    parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
     pg (1.4.6)
@@ -647,8 +671,9 @@ GEM
     prism (1.4.0)
       stringio
     public_suffix (6.0.2)
-    puma (6.6.0)
+    puma (6.6.1)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.8.1)
     rack (2.2.17)
     rack-attack (6.7.0)
@@ -716,17 +741,17 @@ GEM
     rbtree3 (0.7.1)
     redcarpet (3.6.1)
     redis (4.8.1)
-    redis-client (0.25.0)
+    redis-client (0.25.2)
       connection_pool
-    regexp_parser (2.10.0)
-    reline (0.6.1)
+    regexp_parser (2.11.2)
+    reline (0.6.2)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.4.1)
+    rexml (3.4.2)
     rspec (3.13.1)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -734,7 +759,7 @@ GEM
     rspec-cells (0.3.10)
       cells (>= 4.0.0, < 6.0.0)
       rspec-rails (>= 3.0.0)
-    rspec-core (3.13.4)
+    rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -755,7 +780,7 @@ GEM
       rspec-support (~> 3.13)
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
-    rspec-support (3.13.4)
+    rspec-support (3.13.5)
     rspec_junit_formatter (0.6.0)
       rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (1.65.1)
@@ -769,7 +794,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.45.1)
+    rubocop-ast (1.46.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-capybara (2.21.0)
@@ -795,7 +820,7 @@ GEM
     rubocop-rubycw (0.1.6)
       rubocop (~> 1.0)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.4)
+    ruby-vips (2.2.5)
       ffi (~> 1.12)
       logger
     rubyXL (3.4.33)
@@ -804,11 +829,11 @@ GEM
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
-    selenium-webdriver (4.33.0)
+    selenium-webdriver (4.35.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 3.0)
+      rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     semantic_range (3.1.0)
     shakapacker (7.1.0)
@@ -829,13 +854,13 @@ GEM
     simplecov-cobertura (2.1.0)
       rexml
       simplecov (~> 0.19)
-    simplecov-html (0.13.1)
+    simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
     snaky_hash (2.0.3)
       hashie (>= 0.1.0, < 6)
       version_gem (>= 1.1.8, < 3)
-    spring (4.3.0)
+    spring (4.4.0)
     spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
       spring (>= 4)
@@ -845,11 +870,11 @@ GEM
       attr_required (>= 0.0.5)
       faraday (~> 2.0)
       faraday-follow_redirects
-    temple (0.10.3)
+    temple (0.10.4)
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
-    thor (1.3.2)
-    tilt (2.6.0)
+    thor (1.4.0)
+    tilt (2.6.1)
     timeout (0.4.3)
     trailblazer-option (0.1.2)
     tzinfo (2.0.6)
@@ -865,8 +890,6 @@ GEM
       activemodel (>= 3.0.0)
       public_suffix
     version_gem (1.1.8)
-    vips (8.15.1)
-      ffi (~> 1.12)
     w3c_rspec_validators (0.3.0)
       rails
       rspec
@@ -877,8 +900,8 @@ GEM
       rexml (~> 3.2)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-push (3.0.1)
-      jwt (~> 2.0)
+    web-push (3.0.2)
+      jwt (~> 3.0)
       openssl (~> 3.0)
     webfinger (2.1.3)
       activesupport
@@ -922,6 +945,7 @@ DEPENDENCIES
   decidim-voca!
   deface!
   faker (~> 3.2)
+  good_job
   image_processing (~> 1.2)
   next_gen_images!
   omniauth_openid_connect (~> 0.8.0)

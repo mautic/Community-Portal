@@ -1,9 +1,9 @@
 GIT
   remote: https://git.octree.ch/decidim/decidim-module-spam_signal
-  revision: a83758b4d03dfb6a8852a87627071d7b16a81e56
-  tag: v1.0.0
+  revision: df56176f1ecf59343a134bb1a0ca9fd579dfeea9
+  tag: v1.0.3
   specs:
-    decidim-spam_signal (1.0.0)
+    decidim-spam_signal (1.0.2)
       decidim-admin (>= 0.26, < 0.30)
       decidim-comments (>= 0.26, < 0.30)
       decidim-core (>= 0.26, < 0.30)

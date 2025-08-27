@@ -21,3 +21,8 @@ en:
             client_options__jwks_uri: "Jwks URI"
             client_options__end_session_endpoint: "End session endpoint"
 
+  devise:
+    shared:
+      omniauth_openid_button: "Mautic"
+      omniauth_developer_button: Developer
+

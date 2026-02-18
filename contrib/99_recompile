@@ -1,15 +1,4 @@
 #! /bin/sh
 set -e
 echo "/docker-entrypoint.d/99_recompile:"
-if [ ! -d "$ROOT/public/decidim-packs" ]
-then
-    cd $ROOT
-    echo "    compile assets"
-    NODE_ENV=development npm ci
-    bundle exec rails assets:precompile
-    rm -rf node_modules
-    echo "    ✅ assets compiled"
-
-else
-    echo "    ✅ assets are already compiled"
-fi
+bin/compile-assets

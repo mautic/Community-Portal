@@ -4,7 +4,8 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", git: "https://github.com/decidim/decidim.git", branch: ENV.fetch("DECIDIM_BRANCH")
+gem "concurrent-ruby", "1.3.4"
+gem "decidim", git: "https://github.com/decidim/decidim.git", branch: ENV.fetch("DECIDIM_BRANCH", "release/0.29-stable")
 gem "bootsnap", "~> 1.3"
 gem "puma", ">= 6.3.1"
 gem "wicked_pdf", "~> 2.1"
@@ -46,6 +47,11 @@ gem "opentelemetry-instrumentation-all"
 gem "opentelemetry-logs-sdk"
 gem "opentelemetry-sdk"
 gem "deepl-rb"
+
+require File.join(ENV.fetch("ROOT", Dir.pwd), "lib/decidim/voca.rb")
+Decidim::Voca.each_gem do |gem_config, gem_attributes|
+  gem(*gem_config, **gem_attributes)
+end
 
 module_gemfile = ENV.fetch("DECIDIM_MODULE_GEMFILE", "Gemfile.modules")
 eval_gemfile module_gemfile if File.exist?(module_gemfile)

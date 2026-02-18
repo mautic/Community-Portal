@@ -6,9 +6,7 @@ ENV PM2_RUN="decidim,daily,monthly,external_good_job" \
 
 WORKDIR $ROOT
 # Configure bundle
-RUN  bundle config set path "$ROOT/vendor" \
-  && bundle config set without "development:test" \
-  && bundle config set no_cache true \
+RUN bundle config set no_cache true \
   && bundle config set deployment false \
   && bundle config set frozen false \
   && rm -rf vendor voca/Gemfile.lock db/migrate/* 

@@ -1,23 +1,106 @@
 GIT
-  remote: https://git.octree.ch/decidim/decidim-module-spam_signal
-  revision: df56176f1ecf59343a134bb1a0ca9fd579dfeea9
-  tag: v1.0.3
+  remote: https://git.octree.ch/decidim/decidim-module-geo
+  revision: df43d9e1032581c0c9673113222622f166e7f46e
+  tag: v0.3.5
   specs:
-    decidim-spam_signal (1.0.2)
-      decidim-admin (>= 0.26, < 0.30)
-      decidim-comments (>= 0.26, < 0.30)
-      decidim-core (>= 0.26, < 0.30)
-      decidim-forms (>= 0.26, < 0.30)
+    decidim-decidim_geo (0.3.5)
+      activerecord-postgis-adapter
+      decidim-admin (>= 0.29)
+      decidim-api (>= 0.29)
+      decidim-core (>= 0.29)
+      deface (~> 1.9.0)
+      ffi-geos (~> 2.5)
+      rgeo (~> 3.0)
+      rgeo-geojson (~> 2.2)
+      rgeo-shapefile (~> 3.1)
+
+GIT
+  remote: https://git.octree.ch/decidim/decidim-module-spam_signal
+  revision: e33884267e2d89a74abd9550dfea80449d205729
+  tag: v1.0.5
+  specs:
+    decidim-spam_signal (1.0.5)
+      decidim-admin (>= 0.27, < 0.30)
+      decidim-comments (>= 0.27, < 0.30)
+      decidim-core (>= 0.27, < 0.30)
+      decidim-forms (>= 0.27, < 0.30)
       deface (~> 1.9)
 
 GIT
-  remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-voca
-  revision: 793fd6712109446d0b6dbcf1342eb86e5678ffcc
-  tag: v0.0.9
+  remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-ephemeral_participation
+  revision: 8101d6dc4a459bb34809d37ca53f0478d51a36b2
+  tag: v0.0.6
   specs:
-    decidim-voca (0.0.9)
+    decidim-ephemeral_participation (0.0.6)
+      decidim-verifications (~> 0.29)
+
+GIT
+  remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-module-better-accountability
+  revision: f691c7c462f11ad89e5796ac13f708f9d13163f7
+  tag: v0.1.1
+  specs:
+    decidim-decidim_better_accountability (0.1.1)
+      decidim-accountability (>= 0.29)
+      decidim-admin (>= 0.29)
+      decidim-comments (>= 0.29)
+      decidim-core (>= 0.29)
+      deface (>= 1.9.0)
+
+GIT
+  remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-module-only_forms
+  revision: 4a2c7b8f7b65945acadca4b78541734ed0eff16c
+  tag: v0.1.0
+  specs:
+    decidim-only_forms (0.1.0)
+      decidim-core (>= 0.26, < 0.30)
+      decidim-forms (>= 0.26, < 0.30)
+      decidim-surveys (>= 0.26, < 0.30)
+      decidim-templates (>= 0.26, < 0.30)
+
+GIT
+  remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-module-verifications-simple_impersonation
+  revision: c0843f2cb627ff251cf0c55dd3771cde17ddb17e
+  tag: v0.2.0
+  specs:
+    decidim-verifications-simple_impersonation (0.2.0)
+      decidim-admin (>= 0.26, < 0.30)
+      decidim-core (>= 0.26, < 0.30)
+      decidim-verifications (>= 0.26, < 0.30)
+
+GIT
+  remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-telemetry
+  revision: 220a31a5408844d3a824b63775a1581bd3167344
+  tag: v0.0.4
+  specs:
+    decidim-telemetry (0.0.4)
+      decidim-admin (>= 0.29.4)
+      decidim-comments (>= 0.29.4)
+      yabeda (>= 0.14.0)
+      yabeda-activejob (>= 0.6.0)
+      yabeda-activerecord (>= 0.1.1)
+      yabeda-prometheus (>= 0.9.1)
+      yabeda-puma-plugin (>= 0.8.0)
+      yabeda-rails (>= 0.10.0)
+
+GIT
+  remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-user_fields
+  revision: eea3a4f0f75f43095ff9a5436b1a493a928270f8
+  tag: v0.1.4
+  specs:
+    decidim-user_fields (0.1.4)
+      decidim-core (>= 0.29)
+      decidim-verifications (>= 0.29)
+      deface (>= 1.9)
+
+GIT
+  remote: https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-voca
+  revision: 8f8dbf2e4ee4866e350b79c79f0bce75a2881153
+  tag: v0.0.15
+  specs:
+    decidim-voca (0.0.15)
       decidim-admin (>= 0.29, < 0.30)
-      decidim-decidim_awesome (~> 0.12.3)
+      decidim-decidim_awesome (~> 0.12.5)
+      decidim-telemetry (~> 0.0.3)
       deface (~> 1.9)
       faker (~> 3.5.1)
       good_job (~> 4.5.1)
@@ -27,10 +110,10 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome
-  revision: b4c50032542f7295163645b04f494fd00f8c87bb
-  tag: v0.12.3
+  revision: 8c5b491583f3dd5833765bc4246a012b0f214fd0
+  tag: v0.12.6
   specs:
-    decidim-decidim_awesome (0.12.3)
+    decidim-decidim_awesome (0.12.6)
       active_hashcash (~> 0.4.0)
       decidim-admin (>= 0.29.1, < 0.30)
       decidim-core (>= 0.29.1, < 0.30)
@@ -39,7 +122,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 5c58e8daa9dfc66f006342aaca4f62737289961b
+  revision: c8535dac229b0d46138570694d28dd7ff37baf8c
   branch: release/0.29-stable
   specs:
     decidim (0.29.7)
@@ -88,6 +171,10 @@ GIT
     decidim-comments (0.29.7)
       decidim-core (= 0.29.7)
       redcarpet (~> 3.5, >= 3.5.1)
+    decidim-conferences (0.29.7)
+      decidim-core (= 0.29.7)
+      decidim-meetings (= 0.29.7)
+      wicked_pdf (~> 2.7)
     decidim-core (0.29.7)
       active_link_to (~> 1.0)
       acts_as_list (~> 1.0)
@@ -183,6 +270,13 @@ GIT
       wicked_pdf (~> 2.1)
     decidim-generators (0.29.7)
       decidim-core (= 0.29.7)
+    decidim-initiatives (0.29.7)
+      decidim-admin (= 0.29.7)
+      decidim-comments (= 0.29.7)
+      decidim-core (= 0.29.7)
+      decidim-verifications (= 0.29.7)
+      hexapdf (~> 0.32.0)
+      wicked_pdf (~> 2.1)
     decidim-meetings (0.29.7)
       decidim-core (= 0.29.7)
       decidim-forms (= 0.29.7)
@@ -210,6 +304,9 @@ GIT
       devise (~> 4.7)
       devise-i18n (~> 1.2)
       devise_invitable (~> 2.0, >= 2.0.9)
+    decidim-templates (0.29.7)
+      decidim-core (= 0.29.7)
+      decidim-forms (= 0.29.7)
     decidim-verifications (0.29.7)
       decidim-core (= 0.29.7)
 
@@ -237,6 +334,15 @@ GIT
     next_gen_images (1.1.1)
       rails (>= 3.1)
       webp-ffi (~> 0.3.1)
+
+GIT
+  remote: https://github.com/octree-gva/decidim-module-term_customizer
+  revision: d16dda05065dd6591d26200259453c5166ee2972
+  branch: fix/ui-decidim-0.29
+  specs:
+    decidim-term_customizer (0.29.0)
+      decidim-admin (~> 0.29.0)
+      decidim-core (~> 0.29.0)
 
 GEM
   remote: https://rubygems.org/
@@ -327,10 +433,14 @@ GEM
       activesupport (>= 6.1)
     addressable (2.8.8)
       public_suffix (>= 2.0.2, < 8.0)
+    aes_key_wrap (1.1.0)
+    anyway_config (2.7.2)
+      ruby-next-core (~> 1.0)
     ast (2.4.3)
+    attr_required (1.0.2)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1215.0)
-    aws-sdk-core (3.242.0)
+    aws-partitions (1.1207.0)
+    aws-sdk-core (3.241.4)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -338,10 +448,10 @@ GEM
       bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.122.0)
+    aws-sdk-kms (1.121.0)
       aws-sdk-core (~> 3, >= 3.241.4)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.213.0)
+    aws-sdk-s3 (1.212.0)
       aws-sdk-core (~> 3, >= 3.241.4)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -359,8 +469,9 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (4.0.1)
+    bindata (2.5.1)
     bindex (0.8.1)
-    bootsnap (1.23.0)
+    bootsnap (1.21.1)
       msgpack (~> 1.2)
     brakeman (6.2.2)
       racc
@@ -393,6 +504,7 @@ GEM
     charlock_holmes (0.7.9)
     childprocess (5.1.0)
       logger (~> 1.5)
+    cmdparse (3.0.7)
     commonmarker (0.23.12)
     concurrent-ruby (1.3.4)
     crack (1.0.1)
@@ -402,12 +514,14 @@ GEM
     css_parser (1.21.1)
       addressable
     csv (3.3.5)
-    dalli (4.3.2)
+    dalli (4.0.0)
       logger
     dartsass (1.49.8)
     date_validator (0.12.0)
       activemodel (>= 3)
       activesupport (>= 3)
+    dbf (4.3.2)
+      csv
     declarative-builder (0.2.0)
       trailblazer-option (~> 0.1.0)
     declarative-option (0.1.0)
@@ -434,6 +548,7 @@ GEM
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
     drb (2.2.3)
+    dry-initializer (3.2.0)
     email_validator (2.2.4)
       activemodel
     erb_lint (0.4.0)
@@ -458,18 +573,22 @@ GEM
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faker (3.6.0)
+    faker (3.5.3)
       i18n (>= 1.8.11, < 2)
-    faraday (2.14.1)
+    faraday (2.14.0)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
+    faraday-follow_redirects (0.5.0)
+      faraday (>= 1, < 3)
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
     ffi (1.17.3-x86_64-linux-gnu)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
+    ffi-geos (2.5.0)
+      ffi (>= 1.0.0)
     file_validators (3.0.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
@@ -494,16 +613,17 @@ GEM
     geocoder (1.8.6)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
+    geom2d (0.4.1)
     globalid (1.3.0)
       activesupport (>= 6.1)
-    good_job (4.13.2)
+    good_job (4.5.1)
       activejob (>= 6.1.0)
       activerecord (>= 6.1.0)
       concurrent-ruby (>= 1.3.1)
       fugit (>= 1.11.0)
       railties (>= 6.1.0)
       thor (>= 1.0.0)
-    google-protobuf (4.33.5-x86_64-linux-gnu)
+    google-protobuf (4.33.4-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
     googleapis-common-protos-types (1.22.0)
@@ -521,6 +641,10 @@ GEM
     hashdiff (1.2.1)
     hashie (5.1.0)
       logger
+    hexapdf (0.32.2)
+      cmdparse (~> 3.0, >= 3.0.3)
+      geom2d (~> 0.3)
+      openssl (>= 2.2.1)
     highline (3.1.2)
       reline
     html-pipeline (2.14.3)
@@ -554,7 +678,7 @@ GEM
       rails (>= 3.2.0)
     io-console (0.8.2)
     jmespath (1.6.2)
-    json (2.18.1)
+    json (2.18.0)
     json-jwt (1.17.0)
       activesupport (>= 4.2)
       aes_key_wrap
@@ -608,12 +732,13 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0203)
+    mime-types-data (3.2026.0113)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (6.0.1)
       prism (~> 1.5)
     msgpack (1.8.0)
+    multi_json (1.19.1)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
     mutex_m (0.3.0)
@@ -630,7 +755,7 @@ GEM
     net-smtp (0.3.4)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.19.1-x86_64-linux-gnu)
+    nokogiri (1.19.0-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth (1.1.3)
       base64 (~> 0.1)
@@ -672,7 +797,23 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-    openssl (4.0.1)
+    omniauth_openid_connect (0.8.0)
+      omniauth (>= 1.9, < 3)
+      openid_connect (~> 2.2)
+    openid_connect (2.3.1)
+      activemodel
+      attr_required (>= 1.0.0)
+      email_validator
+      faraday (~> 2.0)
+      faraday-follow_redirects
+      json-jwt (>= 1.16)
+      mail
+      rack-oauth2 (~> 2.2)
+      swd (~> 2.0)
+      tzinfo
+      validate_url
+      webfinger (~> 2.0)
+    openssl (4.0.0)
     opentelemetry-api (1.7.0)
     opentelemetry-common (0.23.0)
       opentelemetry-api (~> 1.0)
@@ -682,15 +823,6 @@ GEM
       opentelemetry-api (~> 1.1)
       opentelemetry-common (~> 0.20)
       opentelemetry-sdk (~> 1.10)
-      opentelemetry-semantic_conventions
-    opentelemetry-exporter-otlp-logs (0.2.2)
-      google-protobuf (>= 3.18)
-      googleapis-common-protos-types (~> 1.3)
-      opentelemetry-api (~> 1.1)
-      opentelemetry-common (~> 0.20)
-      opentelemetry-logs-api (~> 0.1)
-      opentelemetry-logs-sdk (~> 0.1)
-      opentelemetry-sdk
       opentelemetry-semantic_conventions
     opentelemetry-helpers-mysql (0.4.0)
       opentelemetry-api (~> 1.7)
@@ -778,7 +910,7 @@ GEM
       opentelemetry-instrumentation-base (~> 0.25)
     opentelemetry-instrumentation-faraday (0.31.0)
       opentelemetry-instrumentation-base (~> 0.25)
-    opentelemetry-instrumentation-grape (0.5.1)
+    opentelemetry-instrumentation-grape (0.5.0)
       opentelemetry-instrumentation-rack (~> 0.29)
     opentelemetry-instrumentation-graphql (0.31.2)
       opentelemetry-instrumentation-base (~> 0.25)
@@ -846,12 +978,6 @@ GEM
       opentelemetry-helpers-sql-processor
       opentelemetry-instrumentation-base (~> 0.25)
       opentelemetry-semantic_conventions (>= 1.8.0)
-    opentelemetry-logs-api (0.2.0)
-      opentelemetry-api (~> 1.0)
-    opentelemetry-logs-sdk (0.4.0)
-      opentelemetry-api (~> 1.2)
-      opentelemetry-logs-api (~> 0.1)
-      opentelemetry-sdk (~> 1.3)
     opentelemetry-registry (0.4.0)
       opentelemetry-api (~> 1.1)
     opentelemetry-sdk (1.10.0)
@@ -869,7 +995,7 @@ GEM
     parallel (1.27.0)
     parallel_tests (4.10.1)
       parallel
-    parser (3.3.10.2)
+    parser (3.3.10.1)
       ast (~> 2.4.1)
       racc
     pastel (0.8.0)
@@ -887,7 +1013,9 @@ GEM
       actionmailer (>= 3)
       net-smtp
       premailer (~> 1.7, >= 1.7.9)
-    prism (1.9.0)
+    prism (1.8.0)
+    prometheus-client (4.2.5)
+      base64
     psych (4.0.6)
       stringio
     public_suffix (7.0.2)
@@ -895,11 +1023,18 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (2.2.22)
+    rack (2.2.21)
     rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-oauth2 (2.3.0)
+      activesupport
+      attr_required
+      faraday (~> 2.0)
+      faraday-follow_redirects
+      json-jwt (>= 1.11.0)
+      rack (>= 2.1.0)
     rack-protection (3.2.0)
       base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
@@ -953,8 +1088,6 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.6.1)
     redis (4.8.1)
-    redis-client (0.25.2)
-      connection_pool
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
@@ -968,6 +1101,12 @@ GEM
     rgeo-activerecord (7.0.1)
       activerecord (>= 5.0)
       rgeo (>= 1.0.0)
+    rgeo-geojson (2.2.0)
+      multi_json (~> 1.15)
+      rgeo (>= 1.0.0)
+    rgeo-shapefile (3.1.0)
+      dbf (~> 4.0)
+      rgeo (>= 1.0)
     rspec (3.13.2)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -996,7 +1135,7 @@ GEM
       rspec-support (~> 3.13)
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
-    rspec-support (3.13.7)
+    rspec-support (3.13.6)
     rspec_junit_formatter (0.6.0)
       rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (1.65.1)
@@ -1035,8 +1174,9 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     rubocop-rubycw (0.1.6)
       rubocop (~> 1.0)
+    ruby-next-core (1.2.0)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.3.0)
+    ruby-vips (2.2.5)
       ffi (~> 1.12)
       logger
     rubyXL (3.4.33)
@@ -1071,7 +1211,7 @@ GEM
     snaky_hash (2.0.3)
       hashie (>= 0.1.0, < 6)
       version_gem (>= 1.1.8, < 3)
-    spring (4.4.2)
+    spring (4.4.0)
     spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
       spring (>= 4)
@@ -1153,6 +1293,30 @@ GEM
     wisper-rspec (1.1.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yabeda (0.14.0)
+      anyway_config (>= 1.0, < 3)
+      concurrent-ruby
+      dry-initializer
+    yabeda-activejob (0.6.0)
+      rails (>= 6.1)
+      yabeda (~> 0.6)
+    yabeda-activerecord (0.1.2)
+      activerecord (>= 6.0)
+      anyway_config (>= 1.3, < 3.0)
+      yabeda (~> 0.6)
+    yabeda-prometheus (0.9.1)
+      prometheus-client (>= 3.0, < 5.0)
+      rack
+      yabeda (~> 0.10)
+    yabeda-puma-plugin (0.9.0)
+      json
+      puma
+      yabeda (~> 0.5)
+    yabeda-rails (0.11.0)
+      activesupport
+      anyway_config (>= 1.3, < 3)
+      railties
+      yabeda (~> 0.8)
     zeitwerk (2.7.4)
 
 PLATFORMS
@@ -1167,10 +1331,23 @@ DEPENDENCIES
   concurrent-ruby (= 1.3.4)
   dalli
   decidim!
+  decidim-conferences!
+  decidim-decidim_awesome!
+  decidim-decidim_better_accountability!
+  decidim-decidim_geo!
   decidim-dev!
+  decidim-ephemeral_participation!
+  decidim-initiatives!
+  decidim-only_forms!
+  decidim-spam_signal!
+  decidim-telemetry!
+  decidim-templates!
+  decidim-term_customizer!
+  decidim-user_fields!
+  decidim-verifications-simple_impersonation!
+  decidim-voca!
   deepl-rb
   deface!
-  faker (~> 3.2)
   good_job
   image_processing (~> 1.2)
   letter_opener_web (~> 2.0)
@@ -1179,10 +1356,9 @@ DEPENDENCIES
   net-pop (~> 0.1.1)
   net-smtp (~> 0.3.1)
   next_gen_images!
+  omniauth_openid_connect (~> 0.8.0)
   opentelemetry-exporter-otlp
-  opentelemetry-exporter-otlp-logs
   opentelemetry-instrumentation-all
-  opentelemetry-logs-sdk
   opentelemetry-sdk
   puma (>= 6.3.1)
   tty-prompt
@@ -1193,4 +1369,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.6
+   2.4.10

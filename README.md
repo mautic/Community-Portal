@@ -44,27 +44,27 @@ Access:
 
 Start a decidim instance with no command
 ```
-docker-compose -f docker-compose.dev.yml up -d
+docker-compose up -d
 ```
 
 Run webpacker
 ```
-docker-compose -f docker-compose.dev.yml run --rm decidim bin/webpack-dev-server
+docker-compose run --rm decidim bin/shakapacker-dev-server
 ```
 
 Run rails server
 ```
-docker-compose -f docker-compose.dev.yml run --rm decidim bundle exec rails s -b 0.0.0.0
+docker-compose run --rm decidim bundle exec rails s -b 0.0.0.0
 ```
 
 Run migrations
 ```
-docker-compose -f docker-compose.dev.yml run --rm decidim bundle exec rails db:migrate
+docker-compose run --rm decidim bundle exec rails db:migrate
 ```
 
 Run a database seed
 ```
-docker-compose -f docker-compose.dev.yml run --rm decidim bundle exec rails db:seed
+docker-compose run --rm decidim bundle exec rails db:seed
 ```
 
 Access: 

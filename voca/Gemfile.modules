@@ -1,0 +1,54 @@
+# Additional Gem in voca
+gem "omniauth_openid_connect", "~> 0.8.0"
+
+gem "decidim-conferences",
+  git: "https://github.com/decidim/decidim.git",
+  branch: ENV.fetch("DECIDIM_BRANCH")
+
+gem "decidim-initiatives", 
+  git: "https://github.com/decidim/decidim.git",
+  branch: ENV.fetch("DECIDIM_BRANCH")
+
+gem "decidim-templates",   
+  git: "https://github.com/decidim/decidim.git",
+  branch: ENV.fetch("DECIDIM_BRANCH")
+
+gem "decidim-decidim_awesome",
+  git: 'https://github.com/decidim-ice/decidim-module-decidim_awesome',
+  tag: 'v0.12.6'
+  
+gem "decidim-term_customizer",
+  git: 'https://github.com/octree-gva/decidim-module-term_customizer',
+  branch: 'fix/ui-decidim-0.29'
+    
+gem "decidim-spam_signal",
+  git: "https://git.octree.ch/decidim/decidim-module-spam_signal",
+  tag: 'v1.0.6'
+  
+gem "decidim-voca",
+  git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-voca",
+  tag: 'v0.0.16'
+
+gem "decidim-telemetry",
+  git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-telemetry",
+  tag: "v0.0.4"
+
+gem 'decidim-decidim_better_accountability', 
+  git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-module-better-accountability",
+  tag: "v0.1.3"
+
+gem "decidim-only_forms",   
+  git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-module-only_forms",
+  tag: "v0.1.1"
+
+gem "decidim-user_fields",   
+  git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-user_fields",
+  tag: "v0.1.4"
+
+gem "decidim-ephemeral_participation",   
+  git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-ephemeral_participation",
+  tag: "v0.0.6"
+
+gem "decidim-verifications-simple_impersonation",
+	git: "https://git.octree.ch/decidim/vocacity/decidim-modules/decidim-module-verifications-simple_impersonation",
+  tag: "v0.2.1"

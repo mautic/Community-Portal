@@ -1,20 +1,33 @@
 # frozen_string_literal: true
 
+# Voca Decidim configuration. Uses secrets with Voca defaults; see config/secrets.yml.
+
 Decidim.configure do |config|
   # The name of the application
-  config.application_name = Rails.application.secrets.decidim[:application_name]
+  config.application_name = Rails.application.secrets.decidim[:application_name].presence || "Voca"
 
   # The email that will be used as sender in all emails from Decidim
-  config.mailer_sender = Rails.application.secrets.decidim[:mailer_sender]
+  config.mailer_sender = Rails.application.secrets.decidim[:mailer_sender].presence || ENV.fetch("SMTP_DEFAULT_FROM", "change-me@example.org")
+
+
+  content_security_policies_extra = {
+    "frame-src" => ["pads.voca.city"]
+  }
+  if ENV.fetch("STORAGE_PROVIDER", "local") == "s3" && ENV.fetch("AWS_ENDPOINT", nil).present?
+    activestorage_endpoint = ENV.fetch("AWS_ENDPOINT")
+    content_security_policies_extra["connect-src"] = [] unless content_security_policies_extra.key?("connect-src")
+    content_security_policies_extra["img-src"] = [] unless content_security_policies_extra.key?("img-src")
+    content_security_policies_extra["connect-src"].push(activestorage_endpoint)
+    content_security_policies_extra["img-src"].push(activestorage_endpoint)
+  end
+  Decidim.content_security_policies_extra = content_security_policies_extra
 
   # Sets the list of available locales for the whole application.
   #
   # When an organization is created through the System area, system admins will
   # be able to choose the available languages for that organization. That list
   # of languages will be equal or a subset of the list in this file.
-  config.available_locales = Rails.application.secrets.decidim[:available_locales].presence || [:en]
-  # Or block set it up manually and prevent ENV manipulation:
-  # config.available_locales = %w(en ca es)
+  config.available_locales = Rails.application.secrets.decidim[:available_locales].presence || [:en, :fr, :sw, :de, :it, :pt, :eu, :hi, :ru, :uk]
 
   # Sets the default locale for new organizations. When creating a new
   # organization from the System area, system admins will be able to overwrite
@@ -40,7 +53,15 @@ Decidim.configure do |config|
   # Enable the service worker. By default is disabled in development and enabled in the rest of environments
   config.service_worker_enabled = Rails.application.secrets.decidim[:service_worker_enabled].present?
 
+  # Sets the list of static pages' slugs that can include content blocks.
+  # By default is only enabled in the terms-of-service static page to allow a summary to be added and include
+  # sections with a two-pane view
+  config.page_blocks = Rails.application.secrets.decidim[:page_blocks].presence || %w(terms-of-service)
+
   # Map and Geocoder configuration
+  #
+  # See Decidim docs at https://docs.decidim.org/en/develop/services/maps.html
+  # for more information about how it works and how to set it up.
   #
   # == HERE Maps ==
   # config.maps = {
@@ -155,13 +176,13 @@ Decidim.configure do |config|
 
   # Defines the quality of image uploads after processing. Image uploads are
   # processed by Decidim, this value helps reduce the size of the files.
-  config.image_uploader_quality = Rails.application.secrets.decidim[:image_uploader_quality].to_i
+  config.image_uploader_quality = (Rails.application.secrets.decidim[:image_uploader_quality].presence || 100).to_i
 
   config.maximum_attachment_size = Rails.application.secrets.decidim[:maximum_attachment_size].to_i.megabytes
   config.maximum_avatar_size = Rails.application.secrets.decidim[:maximum_avatar_size].to_i.megabytes
 
   # The number of reports which a resource can receive before hiding it
-  config.max_reports_before_hiding = Rails.application.secrets.decidim[:max_reports_before_hiding].to_i
+  config.max_reports_before_hiding = (Rails.application.secrets.decidim[:max_reports_before_hiding].presence || 1).to_i
 
   # Custom HTML Header snippets
   #
@@ -176,13 +197,17 @@ Decidim.configure do |config|
   # that an organization's administrator injects malicious scripts to spy on or
   # take over user accounts.
   #
-  config.enable_html_header_snippets = true
+  config.enable_html_header_snippets = if Rails.application.secrets.decidim.key?(:enable_html_header_snippets)
+    Rails.application.secrets.decidim[:enable_html_header_snippets].present?
+  else
+    true
+  end
 
   # Allow organizations admins to track newsletter links.
   config.track_newsletter_links = Rails.application.secrets.decidim[:track_newsletter_links].present? unless Rails.application.secrets.decidim[:track_newsletter_links] == "auto"
 
   # Amount of time that the download your data files will be available in the server.
-  config.download_your_data_expiry_time = Rails.application.secrets.decidim[:download_your_data_expiry_time].to_i.days
+  config.download_your_data_expiry_time = (Rails.application.secrets.decidim[:download_your_data_expiry_time].presence || 15).to_i.days
 
   # Max requests in a time period to prevent DoS attacks. Only applied on production.
   config.throttling_max_requests = Rails.application.secrets.decidim[:throttling_max_requests].to_i
@@ -191,7 +216,7 @@ Decidim.configure do |config|
   config.throttling_period = Rails.application.secrets.decidim[:throttling_period].to_i.minutes
 
   # Time window were users can access the website even if their email is not confirmed.
-  config.unconfirmed_access_for = Rails.application.secrets.decidim[:unconfirmed_access_for].to_i.days
+  config.unconfirmed_access_for = (Rails.application.secrets.decidim[:unconfirmed_access_for].presence || 0).to_i.days
 
   # A base path for the uploads. If set, make sure it ends in a slash.
   # Uploads will be set to `<base_path>/uploads/`. This can be useful if you
@@ -228,7 +253,7 @@ Decidim.configure do |config|
   #
   # Provide a class to generate a timestamp for a document. The instances of
   # this class are initialized with a hash containing the :document key with
-  # the document to be timestamped as value. The istances respond to a
+  # the document to be timestamped as value. The instances respond to a
   # timestamp public method with the timestamp
   #
   # An example class would be something like:
@@ -286,7 +311,7 @@ Decidim.configure do |config|
   end
 
   # Sets Decidim::Exporters::CSV's default column separator
-  config.default_csv_col_sep = Rails.application.secrets.decidim[:default_csv_col_sep] if Rails.application.secrets.decidim[:default_csv_col_sep].present?
+  config.default_csv_col_sep = Rails.application.secrets.decidim[:default_csv_col_sep].presence || ";"
 
   # The list of roles a user can have, not considering the space-specific roles.
   # config.user_roles = %w(admin user_manager)
@@ -312,7 +337,7 @@ Decidim.configure do |config|
   # to interact with third party service to translate the user content.
   #
   # If you still want to use "Decidim::Dev::DummyTranslator" as translator placeholder,
-  # add the follwing line at the beginning of this file:
+  # add the following line at the beginning of this file:
   # require "decidim/dev/dummy_translator"
   #
   # An example class would be something like:
@@ -332,6 +357,9 @@ Decidim.configure do |config|
   # end
   #
   # config.machine_translation_service = "MyTranslationService"
+
+  # Defines the social networking services used for social sharing
+  config.social_share_services = Rails.application.secrets.decidim[:social_share_services]
 
   # Defines the name of the cookie used to check if the user allows Decidim to
   # set cookies.
@@ -367,6 +395,18 @@ Decidim.configure do |config|
   #   }
   # ]
 
+  # Defines additional content security policies following the structure
+  # Read more: https://docs.decidim.org/en/develop/configure/initializer#_content_security_policy
+  config.content_security_policies_extra = {
+    "frame-src" => ["pads.voca.city"]
+  }
+  if ENV.fetch("STORAGE_PROVIDER", "local") == "s3" && ENV.fetch("AWS_ENDPOINT", nil).present?
+    activestorage_endpoint = ENV.fetch("AWS_ENDPOINT")
+    config.content_security_policies_extra["connect-src"] = [] unless config.content_security_policies_extra.key?("connect-src")
+    config.content_security_policies_extra["img-src"] = [] unless config.content_security_policies_extra.key?("img-src")
+    config.content_security_policies_extra["connect-src"].push(activestorage_endpoint)
+    config.content_security_policies_extra["img-src"].push(activestorage_endpoint)
+  end
   # Admin admin password configurations
   Rails.application.secrets.dig(:decidim, :admin_password, :strong).tap do |strong_pw|
     # When the strong password is not configured, default to true
@@ -378,6 +418,8 @@ Decidim.configure do |config|
 
   # Additional optional configurations (see decidim-core/lib/decidim/core.rb)
   config.cache_key_separator = Rails.application.secrets.decidim[:cache_key_separator] if Rails.application.secrets.decidim[:cache_key_separator].present?
+  config.cache_expiry_time = Rails.application.secrets.decidim[:cache_expiry_time].to_i.minutes if Rails.application.secrets.decidim[:cache_expiry_time].present?
+  config.stats_cache_expiry_time = Rails.application.secrets.decidim[:stats_cache_expiry_time].to_i.minutes if Rails.application.secrets.decidim[:stats_cache_expiry_time].present?
   config.expire_session_after = Rails.application.secrets.decidim[:expire_session_after].to_i.minutes if Rails.application.secrets.decidim[:expire_session_after].present?
   config.enable_remember_me = Rails.application.secrets.decidim[:enable_remember_me].present? unless Rails.application.secrets.decidim[:enable_remember_me] == "auto"
   if Rails.application.secrets.decidim[:session_timeout_interval].present?
@@ -385,8 +427,10 @@ Decidim.configure do |config|
   end
   config.follow_http_x_forwarded_host = Rails.application.secrets.decidim[:follow_http_x_forwarded_host].present?
   config.maximum_conversation_message_length = Rails.application.secrets.decidim[:maximum_conversation_message_length].to_i
-  config.password_blacklist = Rails.application.secrets.decidim[:password_blacklist] if Rails.application.secrets.decidim[:password_blacklist].present?
+  config.password_similarity_length = Rails.application.secrets.decidim[:password_similarity_length] if Rails.application.secrets.decidim[:password_similarity_length].present?
+  config.denied_passwords = Rails.application.secrets.decidim[:denied_passwords] if Rails.application.secrets.decidim[:denied_passwords].present?
   config.allow_open_redirects = Rails.application.secrets.decidim[:allow_open_redirects] if Rails.application.secrets.decidim[:allow_open_redirects].present?
+  config.enable_etiquette_validator = Rails.application.secrets.decidim[:enable_etiquette_validator] if Rails.application.secrets.decidim[:enable_etiquette_validator].present?
 end
 
 if Decidim.module_installed? :api
@@ -399,8 +443,6 @@ end
 
 if Decidim.module_installed? :proposals
   Decidim::Proposals.configure do |config|
-    config.similarity_threshold = Rails.application.secrets.dig(:decidim, :proposals, :similarity_threshold).presence || 0.25
-    config.similarity_limit = Rails.application.secrets.dig(:decidim, :proposals, :similarity_limit).presence || 10
     config.participatory_space_highlighted_proposals_limit = Rails.application.secrets.dig(:decidim, :proposals, :participatory_space_highlighted_proposals_limit).presence || 4
     config.process_group_highlighted_proposals_limit = Rails.application.secrets.dig(:decidim, :proposals, :process_group_highlighted_proposals_limit).presence || 3
   end
@@ -434,19 +476,11 @@ if Decidim.module_installed? :accountability
   end
 end
 
-if Decidim.module_installed? :consultations
-  Decidim::Consultations.configure do |config|
-    config.stats_cache_expiration_time = Rails.application.secrets.dig(:decidim, :consultations, :stats_cache_expiration_time).to_i.minutes
-  end
-end
-
 if Decidim.module_installed? :initiatives
   Decidim::Initiatives.configure do |config|
     unless Rails.application.secrets.dig(:decidim, :initiatives, :creation_enabled) == "auto"
       config.creation_enabled = Rails.application.secrets.dig(:decidim, :initiatives, :creation_enabled).present?
     end
-    config.similarity_threshold = Rails.application.secrets.dig(:decidim, :initiatives, :similarity_threshold).presence || 0.25
-    config.similarity_limit = Rails.application.secrets.dig(:decidim, :initiatives, :similarity_limit).presence || 5
     config.minimum_committee_members = Rails.application.secrets.dig(:decidim, :initiatives, :minimum_committee_members).presence || 2
     config.default_signature_time_period_length = Rails.application.secrets.dig(:decidim, :initiatives, :default_signature_time_period_length).presence || 120
     config.default_components = Rails.application.secrets.dig(:decidim, :initiatives, :default_components)
@@ -458,23 +492,6 @@ if Decidim.module_installed? :initiatives
       config.print_enabled = Rails.application.secrets.dig(:decidim, :initiatives, :print_enabled).present?
     end
     config.do_not_require_authorization = Rails.application.secrets.dig(:decidim, :initiatives, :do_not_require_authorization).present?
-  end
-end
-
-if Decidim.module_installed? :elections
-  Decidim::Elections.configure do |config|
-    config.setup_minimum_hours_before_start = Rails.application.secrets.dig(:elections, :setup_minimum_hours_before_start).presence || 3
-    config.start_vote_maximum_hours_before_start = Rails.application.secrets.dig(:elections, :start_vote_maximum_hours_before_start).presence || 6
-    config.voter_token_expiration_minutes = Rails.application.secrets.dig(:elections, :voter_token_expiration_minutes).presence || 120
-  end
-
-  Decidim::Votings.configure do |config|
-    config.check_census_max_requests = Rails.application.secrets.dig(:elections, :votings, :check_census_max_requests).presence || 5
-    config.throttling_period = Rails.application.secrets.dig(:elections, :votings, :throttling_period).to_i.minutes
-  end
-
-  Decidim::Votings::Census.configure do |config|
-    config.census_access_codes_export_expiry_time = Rails.application.secrets.dig(:elections, :votings, :census, :access_codes_export_expiry_time).to_i.days
   end
 end
 

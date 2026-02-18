@@ -10,8 +10,6 @@ services:
       # development ports
       - 3000:3000
       - 3035:3035
-    volumes:
-      - .:/home/decidim/app
     environment:
       RAILS_ENV: development
       NODE_ENV: development

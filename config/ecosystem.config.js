@@ -1,45 +1,60 @@
 module.exports = {
-    apps: [
-      {
-        name: 'decidim',
-        cwd: '/home/decidim/app',
-        script: 'bundle',
-        args: 'exec puma',
-        interpreter: 'ruby',
-        restart_delay: 30000,
-        max_restarts: 10,
-        min_uptime: 20000,
-        max_size: '10M'
-      },
-      {
-        name: 'sidekiq',
-        cwd: '/home/decidim/app',
-        script: 'bundle',
-        args: 'exec sidekiq',
-        interpreter: 'ruby',
-        restart_delay: 30000,
-        max_restarts: 10,
-        min_uptime: 20000,
-        max_size: '10M'
-      },
-      {
-        name: 'daily',
-        script: 'daily', 
-        cron_restart: '0 7 * * *', 
-        autorestart: false,
-        log_date_format: 'YYYY-MM-DD HH:mm Z',
-        error_file: './log/daily-err.log',
-        out_file: './log/daily-out.log',
-        max_size: '2M',
-        time: true,
-        max_size: '10M'
-      },
-    ],
-    deploy: {
-      production: {
-        post_deploy:
-          'pm2 install pm2-logrotate && pm2 set pm2-logrotate:max_size 10M && pm2 set pm2-logrotate:retain 30',
-      },
+  apps: [
+    {
+      name: "decidim",
+      script: "/home/decidim/bin/rails",
+      args: "server -b 0.0.0.0",
+      interpreter: "ruby",
+      kill_timeout: 3000,
+      log_date_format: "YYYY-MM-DD HH:mm Z",
+      combine_logs: true,
+      merge_logs: true,
+      time: true,
+      out_file: "/var/log/run.log",
+      error_file: "/var/log/run.log",
     },
-  };
-  
+    {
+      name: "external_good_job",
+      script: "/home/decidim/bin/good_job",
+      args: "start",
+      interpreter: "ruby",
+      kill_timeout: 3000,
+      log_date_format: "YYYY-MM-DD HH:mm Z",
+      combine_logs: true,
+      merge_logs: true,
+      time: true,
+      out_file: "/var/log/run.log",
+      error_file: "/var/log/run.log",
+    },
+    {
+      name: "snooze",
+      script: "sleep",
+      args: "infinity",
+      interpreter: "bash",
+      kill_timeout: 3000,
+    },
+    {
+      name: "daily",
+      script: "/home/decidim/bin/daily",
+      cron_restart: "0 7 * * *", // Runs daily at 7 AM
+      interpreter: "bash",
+      autorestart: false,
+      log_date_format: "YYYY-MM-DD HH:mm Z",
+      time: true,
+      out_file: "/var/log/run.log",
+      error_file: "/var/log/run.log",
+    },
+    {
+      name: "monthly",
+      script: "/home/decidim/bin/monthly",
+      cron_restart: "0 7 1 * *", // Runs monthly on the 1st at 7 AM
+      interpreter: "bash",
+      autorestart: false,
+      log_date_format: "YYYY-MM-DD HH:mm Z",
+      time: true,
+      out_file: "/var/log/run.log",
+      error_file: "/var/log/run.log",
+    }
+  ],
+
+};
